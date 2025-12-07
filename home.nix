@@ -16,7 +16,16 @@
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
 
-    home.packages = with pkgs; [
-        cowsay
-    ];
+    programs.git = {
+        enable = true;
+        includes = [
+            { path = "~/.gitconfig"; }
+        ];
+        settings = {
+            pull.ff = "only";
+            alias = {
+                cv = "commit -v";
+            };
+        };
+    };
 }
