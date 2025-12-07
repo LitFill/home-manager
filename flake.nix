@@ -7,16 +7,13 @@
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    outputs = {home-manager, ...}: {
-        defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
-        defaultPackage.x86_64-darwin = home-manager.defaultPackage.x86_64-darwin;
+    outputs = { self, nixpkgs, home-manager, ... }: {
+        defaultPackage.x86_64-linux = home-manager.packages.x86_64-linux.default;
 
         homeConfigurations = {
             "litfill" = home-manager.lib.homeManagerConfiguration {
-                system = "x86_64-linux";
-                homeDirectory = "/home/litfill";
-                username = "litfill";
-                configuration.imports = [ ./home.nix ];
+                pkgs = nixpkgs.legacyPackages.x86_64-linux;
+                modules = [ ./home.nix ];
             };
         };
     };
