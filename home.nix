@@ -1,7 +1,13 @@
-{ config, pkgs, ... }:
+{
+    # config,
+    pkgs,
+    ...
+}:
 {
     home.username = "litfill";
     home.homeDirectory = "/home/litfill";
+
+    imports = [ ./config/git.nix ];
 
     # You should not change this value, even if you update Home Manager. If you do
     # want to update the value, then make sure to first check the Home Manager
@@ -36,38 +42,14 @@
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
 
-    programs.git = {
+    programs.neovim = {
         enable = true;
-        settings = {
-            user = {
-                name = "LitFill";
-                email = "marrazzy54@gmail.com";
-            };
-            init = {
-                defaultBranch = "main";
-            };
-            "credential \"https://github.com\"" = {
-                helper = "!/usr/bin/gh auth git-credential";
-            };
-            "credential \"https://gist.github.com\"" = {
-                helper = "!/usr/bin/gh auth git-credential";
-            };
-            difftool = {
-                prompt = false;
-            };
-            pager = {
-                difftool = true;
-            };
-            diff = {
-                tool = "difftastic";
-                external = "difft";
-            };
-            pull = {
-                ff = "only";
-            };
-            alias = {
-                cv = "commit -v";
-            };
-        };
+        defaultEditor = true;
+        viAlias = true;
+        vimAlias = true;
+        vimdiffAlias = true;
+        plugins = with pkgs.vimPlugins; [
+            nvim-treesitter.withAllGrammars
+        ];
     };
 }
