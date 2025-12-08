@@ -48,7 +48,25 @@
                 $env.config.completions.case_sensitive = false
                 $env.config.completions.quick          = true
                 $env.config.completions.partial        = true
-                '';
+
+                $env.EDITOR = "nvim"
+
+                zoxide init nushell | save -f ~/.zoxide.nu
+
+                # hledger journal
+                $env.LEDGER_FILE = "/home/litfill/finance/2025.journal"
+
+                let local_bin = "/home/litfill/.local/bin"
+                $env.PATH     = ($env.PATH | split row (char esep) | prepend $local_bin )
+
+                let rust_bin = "/home/litfill/.cargo/bin"
+                $env.PATH    = ($env.PATH | split row (char esep) | prepend $rust_bin )
+
+                # pnpm
+                $env.PNPM_HOME = "/home/litfill/.local/share/pnpm"
+                $env.PATH = ($env.PATH | split row (char esep) | prepend $env.PNPM_HOME )
+                # pnpm end
+            '';
             shellAliases = {
                 hms = "home-manager switch";
             };

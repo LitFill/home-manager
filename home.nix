@@ -46,12 +46,12 @@
     programs.home-manager.enable = true;
 
     programs.neovim = {
-        enable = true;
+        enable        = true;
         defaultEditor = true;
-        viAlias = true;
-        vimAlias = true;
-        vimdiffAlias = true;
-        plugins = with pkgs.vimPlugins; [
+        viAlias       = true;
+        vimAlias      = true;
+        vimdiffAlias  = true;
+        plugins       = with pkgs.vimPlugins; [
             nvim-treesitter.withAllGrammars
         ];
     };
