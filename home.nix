@@ -18,9 +18,19 @@
     home.stateVersion = "25.11"; # Please read the comment before changing.
 
     home.packages = with pkgs; [
-        htop
-        fortune
+        btop
+        fastfetch
+        haskell-language-server
+        hledger
+        hledger-iadd
+        hledger-ui
+        hledger-utils
+        hledger-web
+        hlint
         nixfmt
+        pandoc
+        puffin
+        shellcheck
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
