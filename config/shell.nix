@@ -1,11 +1,11 @@
 {
-  imports = [
-    ./shell/nushell.nix
-    ./shell/starship.nix
-  ];
+    imports = [
+        ./shell/nushell.nix
+        ./shell/starship.nix
+    ];
 
-  programs.carapace = {
-    enable = true;
-    enableNushellIntegration = true;
-  };
+    programs.carapace = {
+        enable = true;
+        enableNushellIntegration = true;
+    };
 }

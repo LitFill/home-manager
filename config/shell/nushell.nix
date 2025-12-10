@@ -1,9 +1,9 @@
 {
-  programs.nushell = {
-    enable = true;
-    extraConfig = builtins.readFile ./config.nu;
-    shellAliases = {
-      hms = "home-manager switch";
+    programs.nushell = {
+        enable = true;
+        extraConfig = builtins.readFile ./config.nu;
+        shellAliases = {
+            hms = "home-manager switch";
+        };
     };
-  };
 }
