@@ -15,6 +15,7 @@
     imports = [
         ./config/git.nix
         ./config/shell.nix
+        ./config/nixvim.nix
     ];
 
     # You should not change this value, even if you update Home Manager. If you do
@@ -64,17 +65,4 @@
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
-
-    programs.neovim = {
-        enable        = true;
-        defaultEditor = true;
-        viAlias       = true;
-        vimAlias      = true;
-        vimdiffAlias  = true;
-        plugins       = with pkgs.vimPlugins; [
-            nvim-treesitter.withAllGrammars
-        ];
-    };
-
-    home.shell.enableNushellIntegration = true;
 }
