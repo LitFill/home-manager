@@ -5,7 +5,7 @@
     ];
 
     programs.broot = {
-      enable = true;
+        enable = true;
     };
 
     programs.carapace = {
@@ -14,7 +14,7 @@
     };
 
     programs.zoxide = {
-      enable = true;
-      enableNushellIntegration = true;
+        enable = true;
+        enableNushellIntegration = true;
     };
 }

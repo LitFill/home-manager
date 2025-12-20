@@ -3,7 +3,12 @@
     autoCmd =
         let
             mkAuCmd = desc: event: pattern: callback: {
-                inherit desc event pattern callback;
+                inherit
+                    desc
+                    event
+                    pattern
+                    callback
+                    ;
             };
 
             trimOnSafe = lib.nixvim.utils.mkRaw "require('mini.trailspace').trim";

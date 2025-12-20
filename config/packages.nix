@@ -1,29 +1,29 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    bash-language-server
-    btop
-    fastfetch
-    gum
-    haskell-language-server
-    helix
-    hledger
-    hledger-iadd
-    hledger-ui
-    hledger-utils
-    hledger-web
-    hlint
-    idris2
-    idris2Packages.idris2Lsp
-    idris2Packages.pack
-    lua-language-server
-    nixfmt
-    pandoc
-    puffin
-    rustup
-    shellcheck
-    typescript-language-server
-    typst
-    yaml-language-server
-  ];
+    home.packages = with pkgs; [
+        bash-language-server
+        btop
+        fastfetch
+        gum
+        haskell-language-server
+        helix
+        hledger
+        hledger-iadd
+        hledger-ui
+        hledger-utils
+        hledger-web
+        hlint
+        idris2
+        idris2Packages.idris2Lsp
+        idris2Packages.pack
+        lua-language-server
+        nixfmt
+        pandoc
+        puffin
+        rustup
+        shellcheck
+        typescript-language-server
+        typst
+        yaml-language-server
+    ];
 }

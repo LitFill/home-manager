@@ -25,10 +25,10 @@
     home.stateVersion = "25.11"; # Please read the comment before changing.
 
     home.sessionPath = [
-      "/home/litfill/.apps"
-      "/home/litfill/.local/bin"
-      "/home/litfill/.cargo/bin"
-      "/home/litfill/.local/share/pnpm"
+        "/home/litfill/.apps"
+        "/home/litfill/.local/bin"
+        "/home/litfill/.cargo/bin"
+        "/home/litfill/.local/share/pnpm"
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
