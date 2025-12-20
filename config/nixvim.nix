@@ -7,7 +7,7 @@
         vimAlias = true;
 
         imports = [
-            ({ config, ... }: import ./nixvim/options.nix { inherit config; })
+            ({ config, lib, ... }: import ./nixvim/options.nix { inherit config lib; })
             ./nixvim/lsp.nix
             ./nixvim/plugins.nix
             ./nixvim/keymaps.nix
