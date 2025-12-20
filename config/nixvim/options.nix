@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, homeDirectory, ... }:
 {
     globals = {
         mapleader = " ";
@@ -16,7 +16,7 @@
                     end
 
                     local home = vim.fn.expand "$HOME"
-                    local project_home = "${config.home.homeDirectory}/proyek"
+                    local project_home = "${homeDirectory}/proyek"
 
                     if buf_path:find("^" .. vim.pesc(project_home)) then
                         buf_path = buf_path:gsub("^" .. vim.pesc(project_home) .. "/", "")
