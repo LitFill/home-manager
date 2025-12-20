@@ -1,13 +1,23 @@
 {
     programs.nushell = {
         enable = true;
-        extraConfig = builtins.readFile ./config.nu;
+        extraConfig = ''
+            # Custom functions, aliases, and other imperative commands can be placed here.
+            # Home-manager now manages most of the shell configuration declaratively.
+
+            use std/clip
+            use std null_device
+
+            def --env newdir [path : string] {
+                mkdir $path
+                cd $path
+            }
+
+            fastfetch --iterm /home/litfill/Gambar/ojou-red-flowers-katana.jpg --logo-width 36
+        '';
         shellAliases = {
             hms = "home-manager switch";
         };
-        extraConfig = ''
-            fastfetch --iterm /home/litfill/Gambar/ojou-red-flowers-katana.jpg --logo-width 36
-        '';
         settings = {
             history = {
                 file_format = "sqlite";
