@@ -27,6 +27,7 @@
         bash-language-server
         btop
         fastfetch
+        gum
         haskell-language-server
         helix
         hledger
@@ -35,6 +36,7 @@
         hledger-utils
         hledger-web
         hlint
+        idris2
         lua-language-server
         nixfmt
         pandoc

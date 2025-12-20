@@ -58,12 +58,12 @@
         servers = {
             bashls.enable = true;
             clangd.enable = true;
+            idris2_ls.enable = true;
             jsonls.enable = true;
             lua_ls.enable = true;
             nixd.enable = true;
-            sqls.enable = true;
-            ts_ls.enable = true;
             nushell.enable = true;
+            sqls.enable = true;
 
             # Rust (Standard setup)
             rust_analyzer = {

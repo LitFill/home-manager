@@ -14,37 +14,37 @@
             };
         };
 
-        mini-ai.enable = true;
-        mini-align.enable = true;
-        mini-bracketed.enable = true;
-        mini-comment.enable = true;
-        # mini-completion.enable  = true;
-        mini-cursorword.enable = true;
-        mini-diff.enable = true;
-        mini-doc.enable = true;
-        mini-extra.enable = true;
-        mini-git.enable = true;
-        mini-icons.enable = true;
+        mini-ai         .enable = true;
+        mini-align      .enable = true;
+        mini-bracketed  .enable = true;
+        mini-comment    .enable = true;
+        mini-completion .enable = true;
+        mini-cursorword .enable = true;
+        mini-diff       .enable = true;
+        mini-doc        .enable = true;
+        mini-extra      .enable = true;
+        mini-git        .enable = true;
+        mini-icons      .enable = true;
         mini-indentscope.enable = true;
-        mini-jump.enable = true;
-        mini-jump2d.enable = true;
-        mini-move.enable = true;
-        mini-notify.enable = true;
-        mini-operators.enable = true;
-        mini-pairs.enable = true;
-        mini-pick.enable = true;
-        mini-splitjoin.enable = true;
-        mini-starter.enable = true;
-        mini-statusline.enable = true;
-        mini-surround.enable = true;
-        mini-tabline.enable = true;
-        mini-trailspace.enable = true;
+        mini-jump       .enable = true;
+        mini-jump2d     .enable = true;
+        mini-move       .enable = true;
+        mini-notify     .enable = true;
+        mini-operators  .enable = true;
+        mini-pairs      .enable = true;
+        mini-pick       .enable = true;
+        mini-splitjoin  .enable = true;
+        mini-starter    .enable = true;
+        mini-statusline .enable = true;
+        mini-surround   .enable = true;
+        mini-tabline    .enable = true;
+        mini-trailspace .enable = true;
 
-        friendly-snippets.enable = true;
-        transparent.enable = true;
-        neogit.enable = true;
-        todo-comments.enable = true;
-        origami.enable = true;
+        friendly-snippets .enable = true;
+        transparent       .enable = true;
+        neogit            .enable = true;
+        todo-comments     .enable = true;
+        origami           .enable = true;
         rainbow-delimiters.enable = true;
 
         render-markdown = {
@@ -94,13 +94,13 @@
                             formattingProvider = "fourmolu";
                             plugin = {
                                 hlint = {
-                                    codeActionsOn = false;
-                                    diagnosticsOn = false;
+                                    codeActionsOn = true;
+                                    diagnosticsOn = true;
                                 };
                                 importLens = {
-                                    codeActionsOn = false;
-                                    codeLensOn = false;
-                                    globalOn = false;
+                                    codeActionsOn = true;
+                                    codeLensOn    = true;
+                                    globalOn      = true;
                                 };
                             };
                         };

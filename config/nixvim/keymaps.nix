@@ -41,7 +41,7 @@
             (setmap "n" "<leader>gn" "<cmd>Neogit<CR>" { desc = "open NeoGit"; })
 
             # Terminals
-            (setmap "t" "<C-q>" "<C-\><C-n>" {
+            (setmap "t" "<C-q>" "<C-\\><C-n>" {
                 desc = "quit terminal";
                 nowait = true;
             })
@@ -51,6 +51,7 @@
 
             # using fixlist
             (setmap "n" "<C-k>" "<cmd>cnext<CR>" { desc = "Next quickfix"; })
+            (setmap "i" "<C-k>" "<C-k>" { desc = "Input Digraph"; })
             (setmap "n" "<C-j>" "<cmd>cprev<CR>" { desc = "Previous quickfix"; })
             (setmap "n" "<leader>k" "<cmd>lnext<CR>" { desc = "Next location"; })
             (setmap "n" "<leader>j" "<cmd>lprev<CR>" { desc = "Previous location"; })
