@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
     lsp = {
         inlayHints.enable = true;
@@ -58,7 +58,10 @@
         servers = {
             bashls.enable = true;
             clangd.enable = true;
-            idris2_ls.enable = true;
+            idris2-ls = {
+                enable = true;
+                package = pkgs.idris2-with-packages.idris2-lsp;
+            };
             jsonls.enable = true;
             lua_ls.enable = true;
             nixd.enable = true;
