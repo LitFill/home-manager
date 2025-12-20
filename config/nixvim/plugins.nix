@@ -18,7 +18,7 @@
         mini-align.enable = true;
         mini-bracketed.enable = true;
         mini-comment.enable = true;
-        mini-completion.enable = true;
+        mini-completion.enable = false;
         mini-cursorword.enable = true;
         mini-diff.enable = true;
         mini-doc.enable = true;
@@ -108,6 +108,8 @@
                 };
             };
         };
+
+        idris2.enable = true;
 
         blink-cmp = {
             enable = true;

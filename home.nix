@@ -37,6 +37,8 @@
         hledger-web
         hlint
         idris2
+        idris2Packages.idris2Lsp
+        idris2Packages.pack
         lua-language-server
         nixfmt
         pandoc

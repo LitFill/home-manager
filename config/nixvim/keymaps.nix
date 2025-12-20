@@ -2,67 +2,91 @@
     keymaps =
         let
             setmap = mode: key: action: options: {
-                mode = mode;
-                key = key;
-                action = action;
-                options = options;
+                inherit mode key action options;
             };
+
+            # Command wrapper (e.g., cmd "write" -> "<cmd>write<CR>")
+            cmd = str: "<cmd>${str}<CR>";
+
+            nmap = key: action: desc: setmap "n" key action { inherit desc; };
+
+            # 4. Idris specific helper
+            # Usage: idrisMap "cs" "case_split" "description"
+            # Result: Maps `<leader>ics` to `idris2.code_action.case_split()`
+            idrisMap = key: func: desc:
+                nmap "<leader>i${key}"
+                     (cmd "lua require('idris2.code_action').${func}()")
+                     "Idris: ${desc}";
         in
         [
-            (setmap "n" "<leader>qw" "<cmd>wq<CR>" { desc = "save and quit"; })
-            (setmap "n" "<Esc>" "<cmd>nohl<CR>" {
-                desc = "No Highlight";
+            # --- General ---
+            (nmap "<leader>qw" (cmd "wq")    "save and quit")
+            (nmap "<C-s>"      (cmd "write") "save")
+            (nmap "<leader>w"  (cmd "write") "save")
+            (nmap "<leader>cd" (cmd "Cd")    "cd to this file dir")
+
+            # Exception: custom options need the raw 'setmap'
+            (setmap "n" "<Esc>" (cmd "nohl") {
+                desc   = "No Highlight";
                 silent = true;
             })
-            (setmap "n" "<C-s>" "<cmd>write<CR>" { desc = "save"; })
-            (setmap "n" "<leader>w" "<cmd>write<CR>" { desc = "save"; })
-            (setmap "n" "<leader>cd" "<cmd>Cd<CR>" { desc = "cd to this file dir"; })
 
-            # Make
-            (setmap "n" "<leader>mr" "<cmd>term make run<CR>" { desc = "(m)ake (r)un"; })
-            (setmap "n" "<leader>mb" "<cmd>term make build<CR>" { desc = "(m)ake (b)uild"; })
-            (setmap "n" "<leader>mqb" "<cmd>term make build<CR>a<CR>" { desc = "quick build"; })
+            # --- Make ---
+            (nmap "<leader>mr"  (cmd "make run")         "(m)ake (r)un")
+            (nmap "<leader>mb"  (cmd "make build")       "(m)ake (b)uild")
+            (nmap "<leader>mqb" (cmd "make build<CR>a")  "quick build")
 
-            (setmap "n" "<leader>rw" ''%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>'' {
-                desc = "(r)eplace (w)ord";
-            })
+            # --- Editing ---
+            (nmap "<leader>rw" ''%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>'' "(r)eplace (w)ord")
 
-            # Open MiniFiles
-            (setmap "n" "-" "<cmd>lua MiniFiles.open()<CR>" { desc = "Open parent dir"; })
+            # --- Mini Modules ---
+            (nmap "-"           (cmd "lua MiniFiles.open()") "Open parent dir")
+            (nmap "<leader>pb"  (cmd "Pick buffers")         "(p)ick (b)uffers")
+            (nmap "<leader>pf"  (cmd "Pick files")           "(p)ick (f)iles")
+            (nmap "<leader>ph"  (cmd "Pick help")            "(p)ick (h)elp")
+            (nmap "<leader>:"   (cmd "Pick commands")        "(p)ick (c)ommand")
+            (nmap "<leader>po"  (cmd "Pick options")         "(p)ick (o)ption")
 
-            # MiniPick
-            (setmap "n" "<leader>pb" "<cmd>Pick buffers<CR>" { desc = "(p)ick (b)uffers"; })
-            (setmap "n" "<leader>pf" "<cmd>Pick files<CR>" { desc = "(p)ick (f)iles"; })
-            (setmap "n" "<leader>ph" "<cmd>Pick help<CR>" { desc = "(p)ick (h)elp"; })
-            (setmap "n" "<leader>:" "<cmd>Pick commands<CR>" { desc = "(p)ick (c)ommand"; })
-            (setmap "n" "<leader>po" "<cmd>Pick options<CR>" { desc = "(p)ick (o)ption"; })
+            # --- Git ---
+            (nmap "<leader>gn" (cmd "Neogit") "open NeoGit")
 
-            # NeoGit
-            (setmap "n" "<leader>gn" "<cmd>Neogit<CR>" { desc = "open NeoGit"; })
-
-            # Terminals
+            # --- Terminals ---
             (setmap "t" "<C-q>" "<C-\\><C-n>" {
-                desc = "quit terminal";
+                desc   = "quit terminal";
                 nowait = true;
             })
-            (setmap "n" "<leader>ot" "<cmd>term<CR>a" { desc = "(o)pen (t)erminal"; })
-            (setmap "n" "<leader>vt" "<cmd>vs | term<CR>a" { desc = "(v)ertical pane (t)erminal"; })
-            (setmap "n" "<leader>st" "<cmd>sp | term<CR>a" { desc = "horizontal pane (t)erminal"; })
+            (nmap "<leader>ot" (cmd "term<CR>a")       "(o)pen (t)erminal")
+            (nmap "<leader>vt" (cmd "vs | term<CR>a")  "(v)ertical pane (t)erminal")
+            (nmap "<leader>st" (cmd "sp | term<CR>a")  "horizontal pane (t)erminal")
 
-            # using fixlist
-            (setmap "n" "<C-k>" "<cmd>cnext<CR>" { desc = "Next quickfix"; })
+            # --- Quickfix / Lists ---
+            (nmap "<C-k>"      (cmd "cnext") "Next quickfix")
+            (nmap "<C-j>"      (cmd "cprev") "Previous quickfix")
+            (nmap "<leader>k"  (cmd "lnext") "Next location")
+            (nmap "<leader>j"  (cmd "lprev") "Previous location")
+
+            # Mode specific exceptions
             (setmap "i" "<C-k>" "<C-k>" { desc = "Input Digraph"; })
-            (setmap "n" "<C-j>" "<cmd>cprev<CR>" { desc = "Previous quickfix"; })
-            (setmap "n" "<leader>k" "<cmd>lnext<CR>" { desc = "Next location"; })
-            (setmap "n" "<leader>j" "<cmd>lprev<CR>" { desc = "Previous location"; })
 
-            (setmap [ "n" "v" ] "J" "mzJ`z" {
-                desc = "shift+j but the cursor stay in place";
-            })
-            (setmap [ "n" "v" ] "<leader>d" ''"_d'' {
-                desc = "delete without saving to register";
-            })
+            # --- Visual/Motion ---
+            (setmap ["n" "v"] "J" "mzJ`z"         { desc = "shift+j but cursor stays"; })
+            (setmap ["n" "v"] "<leader>d" ''"_d'' { desc = "delete no register"; })
+            (setmap ["i" "v"] "kj" "<Esc>"        { desc = "exit to normal"; })
 
-            (setmap [ "i" "v" ] "kj" "<Esc>" { desc = "exit to normal"; })
+            # --- IDRIS 2 KEYMAPS ---
+            # REPL (The only one not using code_action)
+            (nmap "<leader>iev"
+                (cmd "lua require('idris2.repl').evaluate()")
+                "Idris: evaluate")
+
+            # Code Actions (Using the helper)
+            (idrisMap "cs" "case_split"   "case split")
+            (idrisMap "mc" "make_case"    "make case")
+            (idrisMap "ml" "make_lemma"   "make lemma")
+            (idrisMap "ac" "add_clause"   "add clause")
+            (idrisMap "es" "expr_search"  "search expression")
+            (idrisMap "gd" "generate_def" "generate definition")
+            (idrisMap "rh" "refine_hole"  "refine hole")
+            (idrisMap "in" "intro"        "intro")
         ];
 }
