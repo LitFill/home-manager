@@ -1,10 +1,10 @@
 { ... }:
 {
     programs.nixvim = {
-        enable        = true;
+        enable = true;
         defaultEditor = true;
-        viAlias       = true;
-        vimAlias      = true;
+        viAlias = true;
+        vimAlias = true;
 
         imports = [
             ./nixvim/options.nix
