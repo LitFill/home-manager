@@ -5,7 +5,7 @@
         shellAliases = {
             hms = "home-manager switch";
         };
-        shellInit = ''
+        extraConfig = ''
             fastfetch --iterm /home/litfill/Gambar/ojou-red-flowers-katana.jpg --logo-width 36
         '';
         settings = {

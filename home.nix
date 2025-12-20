@@ -24,7 +24,7 @@
     # release notes.
     home.stateVersion = "25.11"; # Please read the comment before changing.
 
-    home.extraPaths = [
+    home.sessionPath = [
       "/home/litfill/.apps"
       "/home/litfill/.local/bin"
       "/home/litfill/.cargo/bin"
