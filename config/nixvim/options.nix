@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
     globals = {
         mapleader = " ";
