@@ -1,10 +1,11 @@
+{ config, ... }:
 {
     programs.git = {
         enable = true;
         settings = {
             user = {
-                name = "LitFill";
-                email = "marrazzy54@gmail.com";
+                name = config.accounts.email.accounts."litfill".realName;
+                email = config.accounts.email.accounts."litfill".address;
             };
 
             init.defaultBranch = "main";

@@ -57,10 +57,16 @@
                     end
                 end
             '';
+            setupIdris2 = lib.nixvim.utils.mkRaw ''
+                function()
+                    vim.o.makeprg = "idris2 $*"
+                end
+            '';
         in
         [
             (mkAuCmd "Trim on save" "BufWritePre" "*" trimOnSafe)
             (mkAuCmd "Setup Haskell" "FileType" [ "haskell" "cabal" "*.hs" "*.cabal" ] setupHaskell)
+            (mkAuCmd "Setup Idris 2" "FileType" [ "idris" "idris2" "*.idr" "*.ipkg" ] setupIdris2)
             (mkAuCmd "Path Crumb on winbar" [ "BufEnter" "BufWinEnter" ] "*" pathCrumb)
             (mkAuCmd "Ensure signcolumn is always 'yes:2' in normal buffers" "BufEnter" "*" signColumn)
         ];

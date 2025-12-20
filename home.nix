@@ -16,6 +16,7 @@
         ./config/git.nix
         ./config/shell.nix
         ./config/nixvim.nix
+        ./config/packages.nix
     ];
 
     # You should not change this value, even if you update Home Manager. If you do
@@ -23,31 +24,11 @@
     # release notes.
     home.stateVersion = "25.11"; # Please read the comment before changing.
 
-    home.packages = with pkgs; [
-        bash-language-server
-        btop
-        fastfetch
-        gum
-        haskell-language-server
-        helix
-        hledger
-        hledger-iadd
-        hledger-ui
-        hledger-utils
-        hledger-web
-        hlint
-        idris2
-        idris2Packages.idris2Lsp
-        idris2Packages.pack
-        lua-language-server
-        nixfmt
-        pandoc
-        puffin
-        rustup
-        shellcheck
-        typescript-language-server
-        typst
-        yaml-language-server
+    home.extraPaths = [
+      "/home/litfill/.apps"
+      "/home/litfill/.local/bin"
+      "/home/litfill/.cargo/bin"
+      "/home/litfill/.local/share/pnpm"
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -65,6 +46,8 @@
     home.sessionVariables = {
         EDITOR = "nvim";
         RUST_BACKTRACE = 1;
+        LEDGER_FILE = "/home/litfill/finance/2025.journal";
+        PNPM_HOME = "/home/litfill/.local/share/pnpm";
     };
 
     # Let Home Manager install and manage itself.

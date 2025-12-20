@@ -88,5 +88,7 @@
             (idrisMap "gd" "generate_def" "generate definition")
             (idrisMap "rh" "refine_hole"  "refine hole")
             (idrisMap "in" "intro"        "intro")
+            (nmap "<leader>imr" (cmd ''make % -o run | !./build/exec/run'') "make run for idris2")
+            (nmap "<leader>imb" (cmd ''make % -o %:h'')                     "make build for idris2")
         ];
 }
