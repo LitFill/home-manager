@@ -25,5 +25,6 @@
         typescript-language-server
         typst
         yaml-language-server
+        nh
     ];
 }

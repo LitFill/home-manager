@@ -1,3 +1,4 @@
+{ config, ... }:
 {
     programs.nushell = {
         enable = true;
@@ -7,21 +8,27 @@
             LEDGER_FILE = "/home/litfill/finance/2025.journal";
             PNPM_HOME = "/home/litfill/.local/share/pnpm";
         };
-        extraConfig = ''
-            source $home.sessionPath
-            # Custom functions, aliases, and other imperative commands can be placed here.
-            # Home-manager now manages most of the shell configuration declaratively.
+        extraConfig =
+            let
+                sessionPaths = builtins.map (p: ''"${p}"'') config.home.sessionPath;
+                pathList     = builtins.concatStringsSep " " sessionPaths;
+            in
+            ''
+                $env.PATH = ($env.PATH | prepend [ ${pathList} ])
 
-            use std/clip
-            use std null_device
+                # Custom functions, aliases, and other imperative commands can be placed here.
+                # Home-manager now manages most of the shell configuration declaratively.
 
-            def --env newdir [path : string] {
-                mkdir $path
-                cd $path
-            }
+                use std/clip
+                use std null_device
 
-            fastfetch --iterm /home/litfill/Gambar/ojou-red-flowers-katana.jpg --logo-width 36
-        '';
+                def --env newdir [path : string] {
+                    mkdir $path
+                    cd $path
+                }
+
+                fastfetch --iterm /home/litfill/Gambar/ojou-red-flowers-katana.jpg --logo-width 36
+            '';
         shellAliases = {
             hms = "home-manager switch";
         };
