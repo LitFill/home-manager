@@ -8,6 +8,7 @@
             PNPM_HOME = "/home/litfill/.local/share/pnpm";
         };
         extraConfig = ''
+            source $home.sessionPath
             # Custom functions, aliases, and other imperative commands can be placed here.
             # Home-manager now manages most of the shell configuration declaratively.
 
