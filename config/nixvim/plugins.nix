@@ -75,10 +75,6 @@
                     '';
                 };
                 indent.enable = true;
-                ensure_installed = "all";
-                ignore_install = [
-                    "ipkg"
-                ];
             };
             folding = true;
 
