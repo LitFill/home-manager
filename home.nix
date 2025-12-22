@@ -1,6 +1,6 @@
 {
     # config,
-    pkgs,
+    # pkgs,
     ...
 }:
 {
@@ -41,13 +41,6 @@
             indent_width     = 4
             call_parentheses = "None"
         '';
-    };
-
-    home.sessionVariables = {
-        EDITOR = "nvim";
-        RUST_BACKTRACE = 1;
-        LEDGER_FILE = "/home/litfill/finance/2025.journal";
-        PNPM_HOME = "/home/litfill/.local/share/pnpm";
     };
 
     # Let Home Manager install and manage itself.

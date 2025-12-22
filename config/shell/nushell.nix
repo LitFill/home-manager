@@ -1,6 +1,12 @@
 {
     programs.nushell = {
         enable = true;
+        environmentVariables = {
+            EDITOR = "nvim";
+            RUST_BACKTRACE = "1";
+            LEDGER_FILE = "/home/litfill/finance/2025.journal";
+            PNPM_HOME = "/home/litfill/.local/share/pnpm";
+        };
         extraConfig = ''
             # Custom functions, aliases, and other imperative commands can be placed here.
             # Home-manager now manages most of the shell configuration declaratively.
