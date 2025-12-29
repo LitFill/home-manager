@@ -1,4 +1,7 @@
-{ config, ... }:
+{
+    config,
+    ...
+}:
 {
     programs.nushell = {
         enable = true;
@@ -11,9 +14,9 @@
         extraConfig =
             let
                 sessionPaths = builtins.map (p: ''"${p}"'') config.home.sessionPath;
-                pathList     = builtins.concatStringsSep " " sessionPaths;
+                pathList = builtins.concatStringsSep " " sessionPaths;
             in
-            ''
+            /* nu */ ''
                 $env.PATH = ($env.PATH | prepend [ ${pathList} ])
 
                 # Custom functions, aliases, and other imperative commands can be placed here.

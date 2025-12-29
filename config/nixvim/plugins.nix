@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }:
+{
+    pkgs,
+    lib,
+    ...
+}:
 {
     plugins = {
         mini-files = {
@@ -76,7 +80,7 @@
                 };
                 indent.enable = true;
             };
-            folding = true;
+            folding.enable = true;
 
             grammarPackages = [ pkgs.vimPlugins.nvim-treesitter.withAllGrammars ];
         };
@@ -106,6 +110,15 @@
         };
 
         idris2.enable = true;
+
+        gitignore.enable = true;
+        goto-preview.enable = true;
+        indent-o-matic.enable = true;
+        haskell-scope-highlighting.enable = true;
+        helpview.enable = true;
+        hlchunk.enable = true;
+        hmts.enable = true;
+        nix.enable = true;
 
         blink-cmp = {
             enable = true;

@@ -94,5 +94,10 @@
             (idrisMap "in" "intro" "intro")
             (nmap "<leader>imr" (cmd ''make % -o run | !./build/exec/run'') "make run for idris2")
             (nmap "<leader>imb" (cmd ''make % -o %:h'') "make build for idris2")
+
+            # Floating goto-preview
+            (nmap "<leader>gpd" (cmd "lua require('goto-preview').goto_preview_definition()")
+                "Floating definition preview"
+            )
         ];
 }
