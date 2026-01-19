@@ -43,17 +43,52 @@
         #
         # source ("$\{pkgs.direnv}/share/direnv/direnv.nu") # Optional if manual
 
-        # Aliases
-        alias g = git
-        alias v = nvim
-        alias la = ls -a
+        # load-opam
 
-        load-opam
+        # FZF integration
+        $env.FZF_DEFAULT_COMMAND = "fd --type f --hidden --follow --exclude .git"
+        $env.FZF_CTRL_T_COMMAND = "fd --type f --hidden --follow --exclude .git"
 
         fastfetch --iterm /home/litfill/Gambar/ojou-red-flowers-katana.jpg --logo-width 36
       '';
     shellAliases = {
       hms = "home-manager switch";
+
+      g = "git";
+      v = "nvim";
+      la = "ls -a";
+
+      # File Management aliases
+      ll = "eza -la --git --icons";
+      lt = "eza --tree --git --icons";
+      cat = "bat --paging=never --style=header,grid";
+      grep = "rg --pretty";
+      find = "fd";
+
+      # System information aliases
+      top = "btop";
+      df = "ncdu";
+      du = "ncdu";
+
+      # Task management aliases
+      t = "task";
+      tl = "timewarrior";
+
+      # Quick access tools
+      yz = "yazi";
+      fm = "yazi";
+
+      # Fuzzy finding
+      fz = "fzf";
+
+      # Pass aliases
+      passgen = "^pass generate";
+      passotp = "^pass otp";
+      passls = "^pass ls";
+      passshow = "^pass show";
+      passedit = "^pass edit";
+      passinsert = "^pass insert";
+      passgrep = "^pass grep";
     };
     settings = {
       history = {
