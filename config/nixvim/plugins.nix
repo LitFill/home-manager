@@ -114,7 +114,7 @@
     gitignore.enable = true;
     goto-preview.enable = true;
     indent-o-matic.enable = true;
-    haskell-scope-highlighting.enable = true;
+    # haskell-scope-highlighting.enable = true;
     helpview.enable = true;
     hlchunk.enable = true;
     hmts.enable = true;
@@ -152,6 +152,24 @@
           haskell = [ "fourmolu" ];
           rust = [ "rustfmt" ];
           cpp = [ "clang-format" ];
+
+          # Web Development
+          javascript = [ "prettier" ];
+          typescript = [ "prettier" ];
+          javascriptreact = [ "prettier" ];
+          typescriptreact = [ "prettier" ];
+          html = [ "prettier" ];
+          css = [ "prettier" ];
+          scss = [ "prettier" ];
+          json = [ "prettier" ];
+          jsonc = [ "prettier" ];
+          markdown = [ "prettier" ];
+          yaml = [ "prettier" ];
+
+          # Shell scripting
+          sh = [ "shfmt" ];
+          bash = [ "shfmt" ];
+
           "_" = [
             "trim_whitespace"
             "squeeze_blanks"
