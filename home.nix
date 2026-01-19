@@ -18,6 +18,7 @@
     ./config/nixvim.nix
     ./config/packages.nix
     ./config/tmux.nix
+    ./config/security.nix
   ];
 
   # You should not change this value, even if you update Home Manager. If you do

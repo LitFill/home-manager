@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   lsp = {
     inlayHints.enable = true;
@@ -58,7 +58,50 @@
     servers = {
       bashls.enable = true;
       clangd.enable = true;
-      jsonls.enable = true;
+      jsonls = {
+        enable = true;
+        filetypes = [
+          "json"
+          "jsonc"
+        ];
+        settings = {
+          json = {
+            validate = {
+              enable = true;
+            };
+            schemas = [
+              {
+                fileMatch = [ "package.json" ];
+                url = "https://json.schemastore.org/package";
+              }
+              {
+                fileMatch = [ "tsconfig*.json" ];
+                url = "https://json.schemastore.org/tsconfig";
+              }
+              {
+                fileMatch = [ "jsconfig*.json" ];
+                url = "https://json.schemastore.org/jsconfig";
+              }
+              {
+                fileMatch = [ ".eslintrc.json" ];
+                url = "https://json.schemastore.org/eslintrc";
+              }
+              {
+                fileMatch = [ "prettierrc.json" ];
+                url = "https://json.schemastore.org/prettierrc";
+              }
+              {
+                fileMatch = [ ".stylelintrc.json" ];
+                url = "https://json.schemastore.org/stylelintrc";
+              }
+              {
+                fileMatch = [ "babel.config.json" ];
+                url = "https://json.schemastore.org/babelrc";
+              }
+            ];
+          };
+        };
+      };
       lua_ls.enable = true;
       ocamllsp.enable = true;
       nixd.enable = true;
@@ -74,6 +117,73 @@
             "exec"
             "idris2-lsp"
           ];
+        };
+      };
+
+      # ESLint LSP Server untuk JavaScript/TypeScript
+      eslint = {
+        enable = true;
+        filetypes = [
+          "javascript"
+          "javascriptreact"
+          "typescript"
+          "typescriptreact"
+          "vue"
+          "svelte"
+        ];
+        settings = {
+          codeAction = {
+            disableRuleComment = {
+              enable = true;
+              location = "separateLine";
+            };
+            showDocumentation = {
+              enable = true;
+            };
+          };
+          codeActionOnSave = {
+            enable = true;
+            mode = "all";
+          };
+          format = false;
+          nodePath = "";
+          quiet = false;
+          rulesCustomizations = { };
+          run = "onType";
+          validate = "on";
+          workingDirectory = {
+            mode = "location";
+          };
+        };
+      };
+
+      # Stylelint LSP Server untuk CSS/SCSS
+      stylelint_lsp = {
+        enable = true;
+        filetypes = [
+          "css"
+          "scss"
+          "less"
+          "sass"
+          "stylus"
+          "vue"
+          "svelte"
+        ];
+        cmd = [
+          "${pkgs.stylelint-lsp}/bin/stylelint-lsp"
+          "--stdio"
+        ];
+        settings = {
+          stylelintplus = {
+            autoFixOnFormat = true;
+            autoFixOnSave = true;
+            cssInJs = {
+              injectedLanguages = [
+                "javascript"
+                "typescript"
+              ];
+            };
+          };
         };
       };
 
