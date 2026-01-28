@@ -1,35 +1,35 @@
 { config, ... }:
 {
-    programs.git = {
-        enable = true;
-        settings = {
-            user = {
-                name = config.accounts.email.accounts."litfill".realName;
-                email = config.accounts.email.accounts."litfill".address;
-            };
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name = config.accounts.email.accounts."litfill".realName;
+        email = config.accounts.email.accounts."litfill".address;
+      };
 
-            init.defaultBranch = "main";
+      init.defaultBranch = "main";
 
-            "credential \"https://github.com\"" = {
-                helper = "!/usr/bin/gh auth git-credential";
-            };
+      "credential \"https://github.com\"" = {
+        helper = "!/usr/bin/gh auth git-credential";
+      };
 
-            "credential \"https://gist.github.com\"" = {
-                helper = "!/usr/bin/gh auth git-credential";
-            };
+      "credential \"https://gist.github.com\"" = {
+        helper = "!/usr/bin/gh auth git-credential";
+      };
 
-            difftool.prompt = false;
-            pager.difftool = true;
-            pull.ff = "only";
+      difftool.prompt = false;
+      pager.difftool = true;
+      pull.ff = "only";
 
-            diff = {
-                tool = "difftastic";
-                external = "difft";
-            };
+      diff = {
+        tool = "difftastic";
+        external = "difft";
+      };
 
-            alias = {
-                cv = "commit -v";
-            };
-        };
+      alias = {
+        cv = "commit -v";
+      };
     };
+  };
 }

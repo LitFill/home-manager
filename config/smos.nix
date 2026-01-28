@@ -1,9 +1,10 @@
 {
   # pkgs,
-  lib,
+  # lib,
+  smos,
+  system,
   ...
 }:
-with lib;
 let
   smosModule = smos.homeManagerModules.${system}.default;
 in

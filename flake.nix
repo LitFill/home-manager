@@ -9,6 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim.url = "github:nix-community/nixvim";
+    smos.url = "github:NorfairKing/smos";
   };
 
   outputs =
@@ -16,8 +17,9 @@
       nixpkgs,
       home-manager,
       nixvim,
+      smos,
       ...
-    }:
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -26,15 +28,16 @@
       homeConfigurations."litfill" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
+        # SANGAT PENTING: Gunakan extraSpecialArgs untuk mengirimkan
+        # variabel 'smos' dan 'system' ke dalam modul-modul .nix lainnya
+        extraSpecialArgs = { inherit inputs system smos; };
+
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
           ./home.nix
           nixvim.homeModules.nixvim
         ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
       };
     };
 }
