@@ -103,7 +103,7 @@
         };
       };
       lua_ls.enable = true;
-      ocamllsp.enable = true;
+      # ocamllsp.enable = true;
       nixd.enable = true;
       nushell.enable = true;
       sqls.enable = true;
