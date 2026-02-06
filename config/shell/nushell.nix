@@ -13,10 +13,14 @@
     };
     extraConfig =
       let
+        padding = "\n        ";
+        intercalate = builtins.concatStringsSep;
+        pathStr = map (p: ''"${p}"'') config.home.sessionPath;
+        customPaths = intercalate padding pathStr;
       in
       /* nu */ ''
         $env.PATH = ($env.PATH | split row (char esep) | prepend [
-                ${builtins.concatStringsSep "\n        " (map (p: ''"${p}"'') config.home.sessionPath)}
+                ${customPaths}
             ] | uniq)
 
         # Custom functions, aliases, and other imperative commands can be placed here.
