@@ -4,5 +4,4 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [x] **Track: Modularize Neovim configuration for multi-machine flexibility.**
-  *Link: [./tracks/modularize_neovim_20260215/](./tracks/modularize_neovim_20260215/)*
+
