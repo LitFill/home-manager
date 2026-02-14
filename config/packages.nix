@@ -9,14 +9,14 @@
     # stack
     bash-language-server
     btop
-    caddy
+    # caddy
     chez
-    direnv
+    # direnv
     fastfetch
     fd
     fourmolu
     glow
-    gum
+    # gum
     haskell-language-server
     helix
     hledger
@@ -33,17 +33,20 @@
     nh
     nil
     nixfmt
-    pandoc
+    # pandoc
     puffin
     ripgrep
     rsync
     rustup
     shellcheck
+    taplo
     tmux
     typescript-language-server
     typst
+    uiua
+    uiua386
     yaml-language-server
-    yaziPlugins.git
+    # yaziPlugins.git
 
     # Web Development LSP Servers
     html-tidy
@@ -66,7 +69,7 @@
     eza
     delta
     sd
-    choose
+    # choose
 
     # System & Information Tools
     ncdu
@@ -75,9 +78,9 @@
     lm_sensors
 
     # Task Management & Automation
-    taskwarrior2
-    timewarrior
-    cheat
+    # taskwarrior2
+    # timewarrior
+    # cheat
 
     # Communication & Reference
     tldr
