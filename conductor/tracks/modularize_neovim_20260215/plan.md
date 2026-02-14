@@ -1,6 +1,6 @@
 # Implementation Plan: Modularize Neovim Configuration
 
-## Phase 1: Infrastructure and Analysis
+## Phase 1: Infrastructure and Analysis [checkpoint: 0277ee0]
 - [x] Task: Analyze existing Neovim modules (`lsp.nix`, `plugins.nix`, etc.) to identify candidates for modularization. 9bd2a72
 - [x] Task: Create `config/nixvim/base.nix` as a central hub for common Neovim modules. 9bd2a72
 - [x] Task: Create `config/nixvim/profiles/` directory to house machine-specific configurations. 9bd2a72
