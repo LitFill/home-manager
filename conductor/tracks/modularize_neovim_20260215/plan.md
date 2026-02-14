@@ -18,5 +18,5 @@
 
 ## Phase 4: Finalization and Testing
 - [x] Task: Verify the entire Home Manager configuration evaluates correctly using `home-manager build`. 29a50b0
-- [~] Task: Document the new modular Neovim structure in `README.md` or a dedicated doc file.
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Finalization' (Protocol in workflow.md)
+- [x] Task: Document the new modular Neovim structure in `README.md` or a dedicated doc file. 2d5ee24
+- [x] Task: Conductor - User Manual Verification 'Phase 4: Finalization' (Protocol in workflow.md)
