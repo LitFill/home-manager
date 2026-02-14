@@ -56,24 +56,28 @@ home-manager/
 ## Key Features
 
 ### Development Environment
+
 - **Functional Programming**: Haskell (GHC, HLS, Fourmolu), Idris2, OCaml
 - **Modern Languages**: Rust (rustup), TypeScript, Lua
 - **Language Servers**: Comprehensive LSP support for all major languages
 - **Code Quality**: Hlint, Shellcheck, StyLua, Fourmolu formatters
 
 ### Terminal Experience
+
 - **Shell**: Nushell with Starship prompt and carapace completions
 - **Navigation**: zoxide for smart directory jumping, broot for file browsing
 - **Multiplexing**: tmux with sensible defaults
 - **File Tools**: yazi (file manager), fd (find), ripgrep (search)
 
 ### Editor & Tools
+
 - **Editor**: Neovim with NixVim configuration
 - **System Monitoring**: btop, fastfetch
 - **Documentation**: pandoc, glow for markdown rendering
 - **Finance**: Complete hledger suite for accounting
 
 ### Design Philosophy
+
 - **Reproducible**: Everything declared in Nix, no manual setup
 - **Modular**: Clean separation of concerns with individual modules
 - **Minimal**: Essential tools without bloat
@@ -81,15 +85,15 @@ home-manager/
 
 ## Package Categories
 
-| Category | Packages |
-|----------|----------|
-| **Languages** | Haskell, Idris2, Rust, TypeScript, Lua |
-| **Tools** | Git, tmux, fd, ripgrep, rsync |
-| **Formatters** | Fourmolu, StyLua, nixfmt |
-| **LSP Servers** | HLS, rust-analyzer, tsserver, lua-ls |
-| **System** | btop, fastfetch, direnv |
-| **Documentation** | pandoc, glow |
-| **Finance** | hledger suite |
+| Category          | Packages                               |
+| ----------------- | -------------------------------------- |
+| **Languages**     | Haskell, Idris2, Rust, TypeScript, Lua |
+| **Tools**         | Git, tmux, fd, ripgrep, rsync          |
+| **Formatters**    | Fourmolu, StyLua, nixfmt               |
+| **LSP Servers**   | HLS, rust-analyzer, tsserver, lua-ls   |
+| **System**        | btop, fastfetch, direnv                |
+| **Documentation** | pandoc, glow                           |
+| **Finance**       | hledger suite                          |
 
 ## Customization
 
@@ -100,6 +104,8 @@ This configuration is designed to be easily customizable:
 - **Customize editor**: Update `config/nixvim/` directory
 - **Change tools**: Edit individual module files
 
+For now I purposefully ignore `config/desktop.nix` for I am not on NixOS yet.
+
 ## Contributing
 
 Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
@@ -107,4 +113,3 @@ Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
