@@ -7,9 +7,9 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Infrastructure' (Protocol in workflow.md)
 
 ## Phase 2: Core Refactoring
-- [ ] Task: Update `config/nixvim/base.nix` to import `autocmds.nix`, `extra.nix`, `keymaps.nix`, `lsp.nix`, `options.nix`, and `plugins.nix`.
-- [ ] Task: Refactor `config/nixvim.nix` to act as the primary entry point that imports `base.nix`.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Core Refactoring' (Protocol in workflow.md)
+- [x] Task: Update `config/nixvim/base.nix` to import `autocmds.nix`, `extra.nix`, `keymaps.nix`, `lsp.nix`, `options.nix`, and `plugins.nix`. 9bd2a72
+- [x] Task: Refactor `config/nixvim.nix` to act as the primary entry point that imports `base.nix`. a44584e
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Core Refactoring' (Protocol in workflow.md)
 
 ## Phase 3: Profile System Implementation
 - [ ] Task: Implement a mechanism in `config/nixvim.nix` to allow passing a profile name via `extraSpecialArgs` or a similar Nix pattern.
