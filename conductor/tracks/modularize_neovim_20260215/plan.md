@@ -6,7 +6,7 @@
 - [x] Task: Create `config/nixvim/profiles/` directory to house machine-specific configurations. 9bd2a72
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Infrastructure' (Protocol in workflow.md)
 
-## Phase 2: Core Refactoring
+## Phase 2: Core Refactoring [checkpoint: 31bc41e]
 - [x] Task: Update `config/nixvim/base.nix` to import `autocmds.nix`, `extra.nix`, `keymaps.nix`, `lsp.nix`, `options.nix`, and `plugins.nix`. 9bd2a72
 - [x] Task: Refactor `config/nixvim.nix` to act as the primary entry point that imports `base.nix`. a44584e
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Core Refactoring' (Protocol in workflow.md)
