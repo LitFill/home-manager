@@ -33,6 +33,8 @@ For detailed setup instructions, see the [Setup Guide](SETUP.md).
 home-manager/
 ├── config/
 │   ├── nixvim/           # Neovim configuration
+│   │   ├── base.nix      # Common Neovim modules hub
+│   │   ├── profiles/     # Machine-specific profiles
 │   │   ├── plugins.nix   # Plugin definitions
 │   │   ├── keymaps.nix   # Keyboard shortcuts
 │   │   ├── lsp.nix       # Language server setup
