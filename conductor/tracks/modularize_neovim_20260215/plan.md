@@ -16,7 +16,7 @@
 - [x] Task: Create an initial `config/nixvim/profiles/default.nix` for common overrides. 29a50b0
 - [~] Task: Conductor - User Manual Verification 'Phase 3: Profile System' (Protocol in workflow.md)
 
-## Phase 4: Finalization and Testing
+## Phase 4: Finalization and Testing [checkpoint: 332ed5f]
 - [x] Task: Verify the entire Home Manager configuration evaluates correctly using `home-manager build`. 29a50b0
 - [x] Task: Document the new modular Neovim structure in `README.md` or a dedicated doc file. 2d5ee24
 - [x] Task: Conductor - User Manual Verification 'Phase 4: Finalization' (Protocol in workflow.md)
