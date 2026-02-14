@@ -23,6 +23,8 @@
     end
 
     vim.api.nvim_set_hl(0, "MatchParen", { bg = "darkblue" })
+
+    require "matugen" .setup()
   '';
 
   userCommands.Cd = {

@@ -14,5 +14,7 @@
       ./nixvim/autocmds.nix
       ./nixvim/extra.nix
     ];
+
+    filetype.extension.ua = "uiua";
   };
 }

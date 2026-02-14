@@ -25,7 +25,7 @@
     mini-completion.enable = false;
     mini-cursorword.enable = true;
     mini-diff.enable = true;
-    mini-doc.enable = true;
+    # mini-doc.enable = true;
     mini-extra.enable = true;
     mini-git.enable = true;
     mini-icons.enable = true;
@@ -152,6 +152,8 @@
           haskell = [ "fourmolu" ];
           rust = [ "rustfmt" ];
           cpp = [ "clang-format" ];
+          uiua = [ "uiua fmt" ];
+          toml = [ "taplo fmt" ];
 
           # Web Development
           javascript = [ "prettier" ];

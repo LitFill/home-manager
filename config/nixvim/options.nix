@@ -1,4 +1,8 @@
-{ lib, config, ... }:
+{
+  lib,
+  # config,
+  ...
+}:
 {
   globals = {
     mapleader = " ";
@@ -67,43 +71,6 @@
     wrap = false;
   };
 
-  colorschemes.bamboo.enable = true;
-
-  # Auto-commands untuk LSP optimization
-  autoCmd = [
-    {
-      event = "FileType";
-      pattern = [
-        "javascript"
-        "typescript"
-        "javascriptreact"
-        "typescriptreact"
-      ];
-      callback = lib.nixvim.utils.mkRaw ''
-        function()
-            vim.opt_local.tabstop = 2
-            vim.opt_local.shiftwidth = 2
-            vim.opt_local.expandtab = true
-        end
-      '';
-    }
-    {
-      event = "FileType";
-      pattern = [
-        "html"
-        "css"
-        "scss"
-        "json"
-        "yaml"
-        "markdown"
-      ];
-      callback = lib.nixvim.utils.mkRaw ''
-        function()
-            vim.opt_local.tabstop = 2
-            vim.opt_local.shiftwidth = 2
-            vim.opt_local.expandtab = true
-        end
-      '';
-    }
-  ];
+  # colorschemes.bamboo.enable = true;
+  colorschemes.base16.enable = true; # for noctalia matugen template
 }

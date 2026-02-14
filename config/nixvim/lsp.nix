@@ -1,4 +1,8 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 {
   lsp = {
     inlayHints.enable = true;
@@ -58,55 +62,16 @@
     servers = {
       bashls.enable = true;
       clangd.enable = true;
-      jsonls = {
-        enable = true;
-        filetypes = [
-          "json"
-          "jsonc"
-        ];
-        settings = {
-          json = {
-            validate = {
-              enable = true;
-            };
-            schemas = [
-              {
-                fileMatch = [ "package.json" ];
-                url = "https://json.schemastore.org/package";
-              }
-              {
-                fileMatch = [ "tsconfig*.json" ];
-                url = "https://json.schemastore.org/tsconfig";
-              }
-              {
-                fileMatch = [ "jsconfig*.json" ];
-                url = "https://json.schemastore.org/jsconfig";
-              }
-              {
-                fileMatch = [ ".eslintrc.json" ];
-                url = "https://json.schemastore.org/eslintrc";
-              }
-              {
-                fileMatch = [ "prettierrc.json" ];
-                url = "https://json.schemastore.org/prettierrc";
-              }
-              {
-                fileMatch = [ ".stylelintrc.json" ];
-                url = "https://json.schemastore.org/stylelintrc";
-              }
-              {
-                fileMatch = [ "babel.config.json" ];
-                url = "https://json.schemastore.org/babelrc";
-              }
-            ];
-          };
-        };
-      };
       lua_ls.enable = true;
       # ocamllsp.enable = true;
       nixd.enable = true;
       nushell.enable = true;
       sqls.enable = true;
+
+      uiua.enable = true;
+      uiua.config.filetypes = [ "uiua" ];
+
+      taplo.enable = true;
 
       idris2_ls = {
         enable = true;
@@ -183,6 +148,51 @@
                 "typescript"
               ];
             };
+          };
+        };
+      };
+
+      jsonls = {
+        enable = true;
+        filetypes = [
+          "json"
+          "jsonc"
+        ];
+        settings = {
+          json = {
+            validate = {
+              enable = true;
+            };
+            schemas = [
+              {
+                fileMatch = [ "package.json" ];
+                url = "https://json.schemastore.org/package";
+              }
+              {
+                fileMatch = [ "tsconfig*.json" ];
+                url = "https://json.schemastore.org/tsconfig";
+              }
+              {
+                fileMatch = [ "jsconfig*.json" ];
+                url = "https://json.schemastore.org/jsconfig";
+              }
+              {
+                fileMatch = [ ".eslintrc.json" ];
+                url = "https://json.schemastore.org/eslintrc";
+              }
+              {
+                fileMatch = [ "prettierrc.json" ];
+                url = "https://json.schemastore.org/prettierrc";
+              }
+              {
+                fileMatch = [ ".stylelintrc.json" ];
+                url = "https://json.schemastore.org/stylelintrc";
+              }
+              {
+                fileMatch = [ "babel.config.json" ];
+                url = "https://json.schemastore.org/babelrc";
+              }
+            ];
           };
         };
       };
