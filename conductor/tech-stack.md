@@ -22,7 +22,7 @@
 - **Key CLI Utilities:** `fd` (find), `ripgrep` (search), `yazi` (file management), `zoxide` (smart navigation), and `btop` (system monitoring).
 
 ## Editor & IDE
-- **NixVim:** Neovim managed entirely through Nix, providing a modular and reproducible editor setup with comprehensive LSP support.
+- **NixVim:** Neovim managed entirely through Nix, featuring a modular profile system for multi-machine flexibility and comprehensive LSP support.
 
 ## Management & Documentation
 - **Git:** Declaratively configured for version control.

@@ -15,7 +15,7 @@ The primary use case is a template for multiple personal machines (e.g., laptop 
 - **Development Environment:** Ensuring consistent LSP support, compilers (Haskell, Rust, etc.), and editor configurations across all platforms.
 
 ## Highlighted Features
-- **NixVim Integration:** A sophisticated, modular Neovim setup managed entirely through NixVim for ultimate reproducibility and ease of configuration.
+- **Modular NixVim Integration:** A sophisticated Neovim setup managed entirely through NixVim, featuring a robust profile system for shared base settings and machine-specific overrides.
 
 ## Technical Constraints & Preferences
 - **Secret Management:** Sensitive data and secrets are handled using standard Nix environment variables and strict `.gitignore` patterns to keep them out of public version control while maintaining simplicity.
