@@ -30,7 +30,14 @@
 
         # SANGAT PENTING: Gunakan extraSpecialArgs untuk mengirimkan
         # variabel 'smos' dan 'system' ke dalam modul-modul .nix lainnya
-        extraSpecialArgs = { inherit inputs system smos; };
+        extraSpecialArgs = {
+          inherit
+            inputs
+            system
+            smos
+            ;
+          neovim-profile = "default";
+        };
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
