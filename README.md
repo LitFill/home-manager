@@ -106,6 +106,17 @@ This configuration is designed to be easily customizable:
 - **Customize editor**: Update `config/nixvim/` directory
 - **Change tools**: Edit individual module files
 
+### Neovim Profiles
+
+The Neovim configuration is modular and supports profiles for machine-specific overrides:
+
+- **Base Config**: `config/nixvim/base.nix` contains the shared configuration.
+- **Profiles**: `config/nixvim/profiles/` contains machine-specific modules.
+- **Switching Profiles**: Set `neovim-profile` in `flake.nix` to the desired profile name.
+
+> [!IMPORTANT]
+> Because this project uses Nix Flakes, any new profile files **must be staged or committed** (e.g., `git add config/nixvim/profiles/my-profile.nix`) before they can be used in `flake.nix`. Nix will not be able to find untracked files.
+
 For now I purposefully ignore `config/desktop.nix` for I am not on NixOS yet.
 
 ## Contributing
