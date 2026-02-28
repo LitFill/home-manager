@@ -9,3 +9,13 @@ export def --env mkcd [path: string] {
     cd $path
 }
 
+# Go up the directory tree.
+export def --env up [] {
+    cd ..
+}
+
+# Go back to the previous directory.
+export def --env back [] {
+    cd -
+}
+
