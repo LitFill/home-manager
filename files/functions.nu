@@ -24,3 +24,10 @@ export def lss [path: path = "."] {
     ls -l $path | select name type size mode modified
 }
 
+# Data Transformation Functions
+
+# Trim whitespace and remove empty lines from input string or list.
+export def clean-lines [] {
+    $in | lines | str trim | where ($it | is-not-empty)
+}
+
