@@ -19,3 +19,8 @@ export def --env back [] {
     cd -
 }
 
+# Smart directory listing with focus on size, mode, and name.
+export def lss [path: path = "."] {
+    ls -l $path | select name type size mode modified
+}
+
