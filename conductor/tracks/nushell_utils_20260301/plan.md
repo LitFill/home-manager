@@ -6,10 +6,10 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Infrastructure and Initial Setup' (Protocol in workflow.md) 2d33996
 
 ## Phase 2: Navigation and File Management Functions
-- [ ] Task: Implement and test `mkcd` (create directory and enter it).
-    - [ ] Write a test script to verify `mkcd` functionality.
-    - [ ] Implement `mkcd` in `files/functions.nu`.
-    - [ ] Verify tests pass.
+- [x] Task: Implement and test `mkcd` (create directory and enter it). 4f4bf34
+    - [x] Write a test script to verify `mkcd` functionality.
+    - [x] Implement `mkcd` in `files/functions.nu`.
+    - [x] Verify tests pass.
 - [ ] Task: Implement and test navigation shortcuts (e.g., `up` for `cd ..`, `back` for `cd -`).
 - [ ] Task: Implement and test a smart directory listing function (e.g., `lss` that shows size and permissions in a cleaner table).
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Navigation and File Management Functions' (Protocol in workflow.md)
