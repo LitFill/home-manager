@@ -83,7 +83,7 @@
     # cheat
 
     # Communication & Reference
-    tldr
+    tealdeer
 
     # Security & Privacy
     pass

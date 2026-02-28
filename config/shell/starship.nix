@@ -3,6 +3,7 @@
     enable = true;
     settings = {
       add_newline = true;
+      command_timeout = 20000;
 
       character = {
         success_symbol = "[λ](bold green)";

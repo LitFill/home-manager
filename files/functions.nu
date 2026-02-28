@@ -7,6 +7,10 @@
 #
 # Examples:
 #   mkcd new_project
+#
+# ```nu
+#   mkcd temp_dir
+# ```
 export def --env mkcd [
     path: string # The path of the directory to create and enter
 ] {
