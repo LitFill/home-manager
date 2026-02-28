@@ -14,11 +14,11 @@
 - [x] Task: Implement and test a smart directory listing function (e.g., `lss` that shows size and permissions in a cleaner table). 3ccb002
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Navigation and File Management Functions' (Protocol in workflow.md) d998932
 
-## Phase 3: Data Transformation and Utility Idioms
+## Phase 3: Data Transformation and Utility Idioms [checkpoint: d3a4f85]
 - [x] Task: Implement and test a data cleaner (e.g., `clean-lines` to trim and remove empty lines from input). 633ce44
 - [x] Task: Implement and test a JSON/YAML helper (e.g., `to-kv` to convert nested structures to flat key-value pairs). 6f52565
 - [x] Task: Implement and test a Git status summary function (`gst`) that returns a structured Nushell table. 35fb2e2
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Data Transformation and Utility Idioms' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Data Transformation and Utility Idioms' (Protocol in workflow.md) d3a4f85
 
 ## Phase 4: Finalization and Documentation
 - [ ] Task: Audit all new functions to ensure they have proper `help` documentation and examples.
