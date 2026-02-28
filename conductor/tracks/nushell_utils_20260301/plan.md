@@ -17,7 +17,7 @@
 ## Phase 3: Data Transformation and Utility Idioms
 - [x] Task: Implement and test a data cleaner (e.g., `clean-lines` to trim and remove empty lines from input). 633ce44
 - [x] Task: Implement and test a JSON/YAML helper (e.g., `to-kv` to convert nested structures to flat key-value pairs). 6f52565
-- [ ] Task: Implement and test a Git status summary function that returns a structured Nushell table.
+- [x] Task: Implement and test a Git status summary function (`gst`) that returns a structured Nushell table. 35fb2e2
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Data Transformation and Utility Idioms' (Protocol in workflow.md)
 
 ## Phase 4: Finalization and Documentation
