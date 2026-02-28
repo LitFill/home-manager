@@ -51,3 +51,10 @@ export def to-kv [prefix: string = ""] {
     }
 }
 
+# Git Status Idioms
+
+# Get a structured table of git status.
+export def gst [] {
+    git status --short | lines | parse --regex '^(?<status>..) (?<file>.+)'
+}
+
