@@ -10,7 +10,7 @@
     - [x] Write a test script to verify `mkcd` functionality.
     - [x] Implement `mkcd` in `files/functions.nu`.
     - [x] Verify tests pass.
-- [ ] Task: Implement and test navigation shortcuts (e.g., `up` for `cd ..`, `back` for `cd -`).
+- [x] Task: Implement and test navigation shortcuts (e.g., `up` for `cd ..`, `back` for `cd -`). fc571cd
 - [ ] Task: Implement and test a smart directory listing function (e.g., `lss` that shows size and permissions in a cleaner table).
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Navigation and File Management Functions' (Protocol in workflow.md)
 
