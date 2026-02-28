@@ -17,6 +17,7 @@
 
 ## Terminal & Shell Experience
 - **Nushell:** A modern, structured shell used as the primary interface.
+- **Custom Nushell functions:** Modular utility script (`functions.nu`) for common workflows (navigation, `to-kv`, `gst`).
 - **Starship:** A fast, customizable, and cross-shell prompt for a high-quality visual experience.
 - **tmux:** For terminal multiplexing with sensible, reproducible defaults.
 - **Key CLI Utilities:** `fd` (find), `ripgrep` (search), `yazi` (file management), `zoxide` (smart navigation), and `btop` (system monitoring).
