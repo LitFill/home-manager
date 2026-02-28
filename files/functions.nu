@@ -1,38 +1,66 @@
 # Nushell Utility Functions
 # This file is managed by Home Manager and Conductor.
 
-# Navigation Functions
+# --- Navigation Functions ---
 
 # Create a directory and enter it.
-export def --env mkcd [path: string] {
+#
+# Examples:
+#   mkcd new_project
+export def --env mkcd [
+    path: string # The path of the directory to create and enter
+] {
     mkdir $path
     cd $path
 }
 
-# Go up the directory tree.
+# Go up the directory tree by one level.
+#
+# Examples:
+#   up
 export def --env up [] {
     cd ..
 }
 
-# Go back to the previous directory.
+# Go back to the previous working directory.
+#
+# Examples:
+#   back
 export def --env back [] {
     cd -
 }
 
+# --- File Management Functions ---
+
 # Smart directory listing with focus on size, mode, and name.
-export def lss [path: path = "."] {
+#
+# Examples:
+#   lss
+#   lss /tmp
+export def lss [
+    path: path = "." # The path to list
+] {
     ls -l $path | select name type size mode modified
 }
 
-# Data Transformation Functions
+# --- Data Transformation Functions ---
 
-# Trim whitespace and remove empty lines from input string or list.
+# Trim whitespace and remove empty lines from input.
+#
+# Examples:
+#   "  line 1  \n\n  line 2  " | clean-lines
 export def clean-lines [] {
     $in | lines | str trim | where ($it | is-not-empty)
 }
 
 # Flatten a nested record or list into a table of key-value pairs.
-export def to-kv [prefix: string = ""] {
+#
+# Examples:
+#   {a: {b: 1}} | to-kv
+#   [1, {c: 2}] | to-kv
+export def to-kv [
+    prefix: string = "" # Optional prefix for keys
+] {
     let input = $in
     let type = ($input | describe)
 
@@ -51,10 +79,13 @@ export def to-kv [prefix: string = ""] {
     }
 }
 
-# Git Status Idioms
+# --- Git Status Idioms ---
 
 # Get a structured table of git status.
+#
+# Examples:
+#   gst
+#   gst | where status == "M "
 export def gst [] {
     git status --short | lines | parse --regex '^(?<status>..) (?<file>.+)'
 }
-
