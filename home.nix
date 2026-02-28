@@ -40,6 +40,7 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
+    ".config/nushell/functions.nu".source = ./files/functions.nu;
     ".config/nvim/lua/matugen-template.lua".source = ./files/matugen-template.lua;
     "stylua.toml".source = ./files/stylua.toml;
     "fourmolu.yaml".source = ./files/fourmolu.yaml;

@@ -29,6 +29,8 @@
         use std/clip
         use std null_device
 
+        source ~/.config/nushell/functions.nu
+
         def --env newdir [path : string] {
             mkdir $path
             cd $path
