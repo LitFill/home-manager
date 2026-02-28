@@ -15,7 +15,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Navigation and File Management Functions' (Protocol in workflow.md) d998932
 
 ## Phase 3: Data Transformation and Utility Idioms
-- [ ] Task: Implement and test a data cleaner (e.g., `clean-lines` to trim and remove empty lines from input).
+- [x] Task: Implement and test a data cleaner (e.g., `clean-lines` to trim and remove empty lines from input). 633ce44
 - [ ] Task: Implement and test a JSON/YAML helper (e.g., `to-kv` to convert nested structures to flat key-value pairs).
 - [ ] Task: Implement and test a Git status summary function that returns a structured Nushell table.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Data Transformation and Utility Idioms' (Protocol in workflow.md)
