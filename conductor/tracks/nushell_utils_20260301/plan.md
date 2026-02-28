@@ -2,7 +2,7 @@
 
 ## Phase 1: Infrastructure and Initial Setup
 - [x] Task: Create the `files/functions.nu` file to store new utility functions. f3e92d2
-- [ ] Task: Update `config/shell/nushell.nix` to include `source ~/path/to/functions.nu` in the Nushell configuration.
+- [x] Task: Update `config/shell/nushell.nix` to include `source ~/path/to/functions.nu` in the Nushell configuration. 4be684a
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Infrastructure and Initial Setup' (Protocol in workflow.md)
 
 ## Phase 2: Navigation and File Management Functions
