@@ -31,3 +31,23 @@ export def clean-lines [] {
     $in | lines | str trim | where ($it | is-not-empty)
 }
 
+# Flatten a nested record or list into a table of key-value pairs.
+export def to-kv [prefix: string = ""] {
+    let input = $in
+    let type = ($input | describe)
+
+    if ($type =~ "record") {
+        $input | transpose key value | each { |row|
+            let new_key = if ($prefix | is-empty) { $row.key } else { $"($prefix).($row.key)" }
+            $row.value | to-kv $new_key
+        } | flatten
+    } else if ($type =~ "list") {
+        $input | enumerate | each { |item|
+            let new_key = if ($prefix | is-empty) { $"($item.index)" } else { $"($prefix).($item.index)" }
+            $item.item | to-kv $new_key
+        } | flatten
+    } else {
+        [[key, value]; [$prefix, $input]]
+    }
+}
+
