@@ -28,4 +28,5 @@
 ## Management & Documentation
 - **Git:** Declaratively configured for version control.
 - **Documentation Tools:** `pandoc` and `glow` for processing and rendering Markdown and other formats.
+- **Vimwiki:** A personal wiki and note-taking tool integrated into NixVim.
 - **Finance:** The `hledger` suite for plaintext accounting.

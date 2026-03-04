@@ -17,6 +17,7 @@ The primary use case is a template for multiple personal machines (e.g., laptop 
 ## Highlighted Features
 - **Modular NixVim Integration:** A sophisticated Neovim setup managed entirely through NixVim, featuring a robust profile system for shared base settings and machine-specific overrides.
 - **Custom Nushell Utilities:** A curated collection of Nushell functions for enhanced navigation, structured data transformation, and Git workflow integration.
+- **Vimwiki Personal Wiki:** A integrated personal wiki system within Neovim for organizing notes, managing to-do lists, and maintaining a diary.
 
 ## Technical Constraints & Preferences
 - **Secret Management:** Sensitive data and secrets are handled using standard Nix environment variables and strict `.gitignore` patterns to keep them out of public version control while maintaining simplicity.

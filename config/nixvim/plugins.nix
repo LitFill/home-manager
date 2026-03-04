@@ -120,6 +120,20 @@
     hmts.enable = true;
     nix.enable = true;
 
+    vimwiki = {
+      enable = true;
+      settings = {
+        global_ext = 0;
+        list = [
+          {
+            path = "/home/litfill/vimwiki/";
+            syntax = "default";
+            ext = ".wiki";
+          }
+        ];
+      };
+    };
+
     blink-cmp = {
       enable = true;
       settings = {
