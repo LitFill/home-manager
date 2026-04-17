@@ -1,8 +1,21 @@
 { pkgs, ... }:
+let
+  nvimkoka = pkgs.vimUtils.buildVimPlugin {
+    name = "koka-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "syaiful6";
+      repo = "koka.nvim";
+      rev = "c26bf5cf79cb12019b572ac7434e1d88ea561457";
+      hash = "sha256-jyEf9q4tjm+mWAtaC0h/Nd0wSHg2EbZZNPl6RFd2U04=";
+    };
+  };
+in
 {
   extraPlugins = [
     pkgs.vimPlugins.stay-centered-nvim
     pkgs.vimPlugins.focus-nvim
+
+    nvimkoka
   ];
 
   extraConfigLua = ''

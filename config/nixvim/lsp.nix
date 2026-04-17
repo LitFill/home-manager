@@ -71,6 +71,9 @@
       uiua.enable = true;
       uiua.config.filetypes = [ "uiua" ];
 
+      ols.enable = true;
+      cl-lsp.enable = true;
+
       taplo.enable = true;
 
       idris2_ls = {

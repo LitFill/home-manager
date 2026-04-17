@@ -120,6 +120,10 @@
     hmts.enable = true;
     nix.enable = true;
 
+    ## for LISP
+    parinfer-rust.enable = true;
+    conjure.enable = true;
+
     vimwiki = {
       enable = true;
       settings = {
@@ -168,6 +172,7 @@
           cpp = [ "clang-format" ];
           uiua = [ "uiua fmt" ];
           toml = [ "taplo fmt" ];
+          odin = [ "ols fmt" ];
 
           # Web Development
           javascript = [ "prettier" ];

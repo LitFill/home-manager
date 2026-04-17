@@ -28,11 +28,14 @@
     # idris2
     # idris2Packages.idris2Lsp
     idris2Packages.pack
+    koka
     lua-language-server
     nerd-fonts.monaspace
     nh
     nil
     nixfmt
+    nix-output-monitor
+    # odin
     # pandoc
     puffin
     ripgrep
@@ -41,6 +44,7 @@
     shellcheck
     taplo
     tmux
+    tree-sitter
     typescript-language-server
     typst
     uiua
@@ -50,16 +54,16 @@
 
     # Web Development LSP Servers
     html-tidy
-    nodePackages_latest.vscode-langservers-extracted
+    vscode-langservers-extracted
     emmet-ls
 
     # Web Development Formatters
-    nodePackages_latest.prettier
-    nodePackages_latest.stylelint
-    nodePackages_latest.js-beautify
+    prettier
+    stylelint
+    js-beautify
 
     # Linting & Code Quality
-    nodePackages_latest.eslint
+    eslint
     stylelint-lsp
 
     # Productivity & File Management
@@ -92,5 +96,12 @@
     # Media & Entertainment
     imv
     mpv
+
+    # LISP
+    sbcl
+    asdf
+    # roswell
+
+    rlwrap
   ];
 }
