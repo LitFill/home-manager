@@ -61,6 +61,16 @@
     };
     servers = {
       bashls.enable = true;
+      astro = {
+        enable = true;
+        extraOptions = {
+          init_options = {
+            typescript = {
+              tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
+            };
+          };
+        };
+      };
       clangd.enable = true;
       lua_ls.enable = true;
       # ocamllsp.enable = true;
