@@ -117,15 +117,83 @@ export def show [
     $"($fname):\n\n($content)\n"
 }
 
-# Show content of all files in the current directory recursively.
+# Show indented content of a file.
+#
+# Examples:
+#   show README.md
+export def "show ext" [
+    fname: path # The file to display
+] {
+    let content = (
+        open --raw $fname
+        | lines
+        | each { |line| $"($line)" }
+        | str join "\n"
+    )
+    let ext = ($fname | path parse | get extension)
+    $"```($ext) ($fname)\n($content)\n```\n"
+}
+
+# Show content of all files recursively, with optional filters.
 #
 # Examples:
 #   glimpse
-export def glimpse [] {
-    ls **/*
-    | where type == file
-    | get name
-    | par-each { |file| show $file }
+#   glimpse /tmp
+#   glimpse --ext nu
+#   glimpse --max-lines 30
+#   glimpse --hidden
+#   glimpse --ext md --max-lines 10
+export def glimpse [
+    path: path = "."       # Root path to search (default: current dir)
+    --ext: string = ""     # Filter by file extension, e.g. "nu", "md"
+    --max-lines: int = 0   # Max lines shown per file (0 = unlimited)
+    --hidden               # Include hidden files (those starting with '.')
+    --pretty               # do not use ``` fence
+] {
+    let glob_flags = if $hidden {
+        {no_dir: true}
+    } else {
+        {no_dir: true, no_symlink: false}
+    }
+
+    let pattern = ($path | path join "**/*")
+
+    let all_files = (
+        if $hidden {
+            glob $pattern --no-dir
+        } else {
+            glob $pattern --no-dir --exclude ["**/.*", "**/.*/**"]
+        }
+        | if ($ext | is-not-empty) {
+            where { |f|
+                ($f | path parse | get extension) == $ext
+            }
+        } else { $in }
+        | sort
+    )
+
+    if ($all_files | is-empty) {
+        print $"(ansi yellow)No files found.(ansi reset)"
+        return
+    }
+
+    if $pretty {
+        $all_files | each { |file|
+            let lines  = (open --raw $file | lines)
+            let total  = ($lines | length)
+            let limit  = if $max_lines > 0 { $max_lines } else { $total }
+            let shown  = ($lines | first $limit)
+            let body   = ($shown | each { |l| $"    ($l)" } | str join "\n")
+
+            let trailer = if ($limit < $total) {
+                $"\n    (ansi yellow)... [showing ($limit) of ($total) lines](ansi reset)"
+            } else { "" }
+
+            $"(ansi cyan)─── ($file)(ansi reset)\n\n($body)($trailer)\n"
+        }
+    } else {
+        $all_files | each { |file| show ext $file }
+    }
     | str join "\n"
 }
 
