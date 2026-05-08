@@ -63,20 +63,22 @@
 
     treesitter = {
       enable = true;
+      # highlight = {
+      #   disable = lib.nixvim.utils.mkRaw ''
+      #     function (_, buf)
+      #                   local max_filesize = 1000 * 1024
+      #                   local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      #                   if ok and stats and stats.size > max_filesize
+      #                   then
+      #                       return true
+      #                   end
+      #               end
+      #   '';
+      # };
       settings = {
         highlight = {
           enable = true;
           additional_vim_regex_highlighting = true;
-          disable = lib.nixvim.utils.mkRaw ''
-            function (_, buf)
-                          local max_filesize = 1000 * 1024
-                          local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-                          if ok and stats and stats.size > max_filesize
-                          then
-                              return true
-                          end
-                      end
-          '';
         };
         indent.enable = true;
       };
