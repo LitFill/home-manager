@@ -28,7 +28,7 @@
     # idris2
     # idris2Packages.idris2Lsp
     idris2Packages.pack
-    koka
+    # koka
     lua-language-server
     nerd-fonts.monaspace
     nh
