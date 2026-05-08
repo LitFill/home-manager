@@ -45,7 +45,7 @@
     mini-trailspace.enable = true;
 
     friendly-snippets.enable = true;
-    transparent.enable = true;
+    # transparent.enable = true;
     neogit.enable = true;
     todo-comments.enable = true;
     origami.enable = true;

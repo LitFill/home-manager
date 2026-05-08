@@ -27,13 +27,13 @@ in
         ui = { colorcolumn = { enable = true } }
     }
 
-    local trans = require "transparent"
+    -- local trans = require "transparent"
 
-    if vim.g.neovide then
-        trans.toggle(false)
-    else
-        trans.toggle(true)
-    end
+    -- if vim.g.neovide then
+    --     trans.toggle(false)
+    -- else
+    --     trans.toggle(true)
+    -- end
 
     vim.api.nvim_set_hl(0, "MatchParen", { bg = "darkblue" })
 
