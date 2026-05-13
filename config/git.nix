@@ -24,7 +24,6 @@
 
       diff = {
         tool = "difftastic";
-        external = "difft";
       };
 
       alias = {
