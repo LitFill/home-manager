@@ -10,12 +10,9 @@
 
       init.defaultBranch = "main";
 
-      "credential \"https://github.com\"" = {
+      credential = {
         helper = "!/usr/bin/gh auth git-credential";
-      };
-
-      "credential \"https://gist.github.com\"" = {
-        helper = "!/usr/bin/gh auth git-credential";
+        useHttpPath = true;
       };
 
       difftool.prompt = false;
