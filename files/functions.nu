@@ -29,6 +29,14 @@ export def --env up [] {
 export def --env back [] {
     cd -
 }
+def _list_dirs [path: path] {
+    let dirs = (ls $path | where type == "dir" | sort-by name)
+    if ($dirs | is-empty) {
+        print $"(ansi yellow)No directories found in '(ansi green)($path)(ansi yellow)'.(ansi reset)"
+    }
+    $dirs
+}
+
 
 # Fuzzy find a directory and cd into it.
 #
@@ -38,12 +46,8 @@ export def --env back [] {
 export def --env lcd [
     path: path = "." # The path to search for directories
 ] {
-    let dirs = (ls $path | where type == "dir" | sort-by name)
-
-    if ($dirs | is-empty) {
-        print $"(ansi yellow)No directories found in '(ansi green)($path)(ansi yellow)'.(ansi reset)"
-        return
-    }
+    let dirs = (_list_dirs $path)
+    if ($dirs | is-empty) { return }
 
     let prompt = $"(ansi cyan)Select a directory in (ansi green)($path)(ansi cyan) to cd into:(ansi reset)"
     let selection = (
@@ -64,12 +68,8 @@ export def --env lcd [
 export def --env ncd [
     path: path = "." # The path to list directories from
 ] {
-    let dirs = (ls $path | where type == "dir" | sort-by name)
-
-    if ($dirs | is-empty) {
-        print $"(ansi yellow)No directories found in '(ansi green)($path)(ansi yellow)'.(ansi reset)"
-        return
-    }
+    let dirs = (_list_dirs $path)
+    if ($dirs | is-empty) { return }
 
     $dirs | select name modified | print
 
@@ -101,21 +101,6 @@ export def lss [
     ls -l $path | select name type size mode modified
 }
 
-# Show indented content of a file.
-#
-# Examples:
-#   show README.md
-export def show [
-    fname: path # The file to display
-] {
-    let content = (
-        open --raw $fname
-        | lines
-        | each { |line| $"    ($line)" }
-        | str join "\n"
-    )
-    $"($fname):\n\n($content)\n"
-}
 
 # Show indented content of a file.
 #
@@ -133,6 +118,28 @@ export def "show ext" [
     let ext = ($fname | path parse | get extension)
     $"```($ext) ($fname)\n($content)\n```\n"
 }
+
+def _format_file [file: path, pretty: bool, max_lines: int] {
+    let lines = (open --raw $file | lines)
+    let total = ($lines | length)
+    let limit = if $max_lines > 0 { $max_lines } else { $total }
+    let shown = ($lines | first $limit)
+    let body = ($shown | each { |l| if $pretty { $"    ($l)" } else { $l } } | str join "\n")
+    let trailer = if ($limit < $total) {
+        if $pretty {
+            $"\n    (ansi yellow)... [showing ($limit) of ($total) lines](ansi reset)"
+        } else {
+            "\n```\n" + $"(ansi yellow)... [showing ($limit) of ($total) lines](ansi reset)"
+        }
+    } else { "" }
+    if $pretty {
+        $"(ansi cyan)─── ($file)(ansi reset)\n\n($body)($trailer)\n"
+    } else {
+        let ext = ($file | path parse | get extension)
+        $"```($ext) ($file)\n($body)($trailer)\n```\n"
+    }
+}
+
 
 # Show content of all files recursively, with optional filters.
 #
@@ -177,23 +184,7 @@ export def glimpse [
         return
     }
 
-    if $pretty {
-        $all_files | each { |file|
-            let lines  = (open --raw $file | lines)
-            let total  = ($lines | length)
-            let limit  = if $max_lines > 0 { $max_lines } else { $total }
-            let shown  = ($lines | first $limit)
-            let body   = ($shown | each { |l| $"    ($l)" } | str join "\n")
-
-            let trailer = if ($limit < $total) {
-                $"\n    (ansi yellow)... [showing ($limit) of ($total) lines](ansi reset)"
-            } else { "" }
-
-            $"(ansi cyan)─── ($file)(ansi reset)\n\n($body)($trailer)\n"
-        }
-    } else {
-        $all_files | each { |file| show ext $file }
-    }
+    $all_files | each { |file| _format_file $file $pretty $max_lines }
     | str join "\n"
 }
 
@@ -207,13 +198,6 @@ export def clean-lines [] {
     $in | lines | str trim | where ($it | is-not-empty)
 }
 
-# Join a list of strings with newlines.
-#
-# Examples:
-#   ['a', 'b'] | unlines
-export def unlines [] : list<string> -> string {
-    $in | str join "\n"
-}
 
 # Flatten a nested record or list into a table of key-value pairs.
 #
@@ -243,18 +227,6 @@ export def to-kv [
 
 # --- Development Tools ---
 
-# Initialize opam environment.
-#
-# Examples:
-#   load-opam
-#   load-opam --version 4.14.0
-export def --env load-opam [
-    --version: string = "" # The opam switch version to load
-] {
-    let switch = if ($version | is-empty) { "default" } else { $version }
-    let opam_env = (opam env --switch=($switch) --shell=powershell | parse "$env:{key} = '{val}'" | transpose -rd)
-    load-env $opam_env
-}
 
 # --- Git Status Idioms ---
 
