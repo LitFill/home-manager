@@ -17,32 +17,15 @@
         };
       };
     };
-
-    mini-ai.enable = true;
-    mini-align.enable = true;
-    mini-bracketed.enable = true;
-    mini-comment.enable = true;
+  } // lib.genAttrs [
+    "mini-ai" "mini-align" "mini-bracketed" "mini-comment" "mini-cursorword"
+    "mini-diff" "mini-extra" "mini-git" "mini-icons" "mini-indentscope"
+    "mini-jump" "mini-jump2d" "mini-move" "mini-notify" "mini-operators"
+    "mini-pairs" "mini-pick" "mini-splitjoin" "mini-starter" "mini-statusline"
+    "mini-surround" "mini-tabline" "mini-trailspace"
+  ] (name: { enable = true; })
+  // {
     mini-completion.enable = false;
-    mini-cursorword.enable = true;
-    mini-diff.enable = true;
-    # mini-doc.enable = true;
-    mini-extra.enable = true;
-    mini-git.enable = true;
-    mini-icons.enable = true;
-    mini-indentscope.enable = true;
-    mini-jump.enable = true;
-    mini-jump2d.enable = true;
-    mini-move.enable = true;
-    mini-notify.enable = true;
-    mini-operators.enable = true;
-    mini-pairs.enable = true;
-    mini-pick.enable = true;
-    mini-splitjoin.enable = true;
-    mini-starter.enable = true;
-    mini-statusline.enable = true;
-    mini-surround.enable = true;
-    mini-tabline.enable = true;
-    mini-trailspace.enable = true;
 
     friendly-snippets.enable = true;
     # transparent.enable = true;
@@ -176,22 +159,12 @@
           toml = [ "taplo fmt" ];
           odin = [ "ols fmt" ];
 
-          # Web Development
-          javascript = [ "prettier" ];
-          typescript = [ "prettier" ];
-          javascriptreact = [ "prettier" ];
-          typescriptreact = [ "prettier" ];
-          html = [ "prettier" ];
-          css = [ "prettier" ];
-          scss = [ "prettier" ];
-          json = [ "prettier" ];
-          jsonc = [ "prettier" ];
-          markdown = [ "prettier" ];
-          yaml = [ "prettier" ];
-
-          # Shell scripting
-          sh = [ "shfmt" ];
-          bash = [ "shfmt" ];
+        } // lib.genAttrs [
+          "javascript" "typescript" "javascriptreact" "typescriptreact"
+          "html" "css" "scss" "json" "jsonc" "markdown" "yaml"
+        ] (_: [ "prettier" ])
+        // lib.genAttrs [ "sh" "bash" ] (_: [ "shfmt" ])
+        // {
 
           "_" = [
             "trim_whitespace"
