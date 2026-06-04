@@ -176,36 +176,17 @@
             validate = {
               enable = true;
             };
-            schemas = [
-              {
-                fileMatch = [ "package.json" ];
-                url = "https://json.schemastore.org/package";
-              }
-              {
-                fileMatch = [ "tsconfig*.json" ];
-                url = "https://json.schemastore.org/tsconfig";
-              }
-              {
-                fileMatch = [ "jsconfig*.json" ];
-                url = "https://json.schemastore.org/jsconfig";
-              }
-              {
-                fileMatch = [ ".eslintrc.json" ];
-                url = "https://json.schemastore.org/eslintrc";
-              }
-              {
-                fileMatch = [ "prettierrc.json" ];
-                url = "https://json.schemastore.org/prettierrc";
-              }
-              {
-                fileMatch = [ ".stylelintrc.json" ];
-                url = "https://json.schemastore.org/stylelintrc";
-              }
-              {
-                fileMatch = [ "babel.config.json" ];
-                url = "https://json.schemastore.org/babelrc";
-              }
-            ];
+            schemas = builtins.map
+              ({ pattern, url }: { fileMatch = [ pattern ]; inherit url; })
+              [
+                { pattern = "package.json";       url = "https://json.schemastore.org/package"; }
+                { pattern = "tsconfig*.json";     url = "https://json.schemastore.org/tsconfig"; }
+                { pattern = "jsconfig*.json";     url = "https://json.schemastore.org/jsconfig"; }
+                { pattern = ".eslintrc.json";     url = "https://json.schemastore.org/eslintrc"; }
+                { pattern = "prettierrc.json";    url = "https://json.schemastore.org/prettierrc"; }
+                { pattern = ".stylelintrc.json";  url = "https://json.schemastore.org/stylelintrc"; }
+                { pattern = "babel.config.json";  url = "https://json.schemastore.org/babelrc"; }
+              ];
           };
         };
       };
