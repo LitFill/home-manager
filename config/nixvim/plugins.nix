@@ -126,7 +126,6 @@
     # haskell-scope-highlighting.enable = true;
     helpview.enable = true;
     hlchunk.enable = true;
-    hmts.enable = true;
     nix.enable = true;
 
     ## for LISP
