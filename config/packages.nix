@@ -88,6 +88,7 @@
 
     # Security & Privacy
     pass
+    passExtensions.pass-otp
     gnupg
 
     # Media & Entertainment
