@@ -11,12 +11,6 @@
     homedir = "${config.home.homeDirectory}/.gnupg";
   };
 
-  # Shell integration for pass
-  programs.bash.initExtra = ''
-    # Pass completion for bash
-    source ${pkgs.pass}/etc/bash-completion.d/pass
-  '';
-
   # Git integration for pass
   programs.git.settings = {
     gpg = {
