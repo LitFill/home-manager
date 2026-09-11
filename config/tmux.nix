@@ -8,7 +8,6 @@
     historyLimit = 10000;
     keyMode = "vi";
     mouse = true;
-    prefix = "C-a";
 
     plugins = with pkgs.tmuxPlugins; [
       tokyo-night-tmux
@@ -40,8 +39,8 @@
       unbind '"'
       unbind %
 
-      # Mulai penomoran jendela dan panel dari 1
-      set  -g base-index      1
+      # Mulai penomoran panel dari 1
+
       setw -g pane-base-index 1
 
       # Reload konfigurasi
