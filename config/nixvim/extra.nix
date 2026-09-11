@@ -34,7 +34,8 @@
 
     vim.api.nvim_set_hl(0, "MatchParen", { bg = "darkblue" })
 
-    require "matugen" .setup()
+    -- matugen theming disabled for now (no themes generated currently)
+    -- require "matugen" .setup()
   '';
 
   userCommands.Cd = {

@@ -51,6 +51,6 @@
     wrap = false;
   };
 
-  # colorschemes.bamboo.enable = true;
-  colorschemes.base16.enable = true; # for noctalia matugen template
+  colorschemes.bamboo.enable = true;
+  # colorschemes.base16.enable = true; # for noctalia matugen template (disabled until themes are generated again)
 }
