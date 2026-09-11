@@ -1,8 +1,4 @@
-{
-  # config,
-  # pkgs,
-  ...
-}:
+{ ... }:
 {
   home.username = "litfill";
   home.homeDirectory = "/home/litfill";

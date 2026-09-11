@@ -4,19 +4,13 @@
 }:
 {
   home.packages = with pkgs; [
-    # cabal-install
-    # ghc
-    # stack
     bash-language-server
     btop
-    # caddy
     chez
-    # direnv
     fastfetch
     fd
     fourmolu
     glow
-    # gum
     haskell-language-server
     helix
     hledger
@@ -25,18 +19,13 @@
     hledger-utils
     hledger-web
     hlint
-    # idris2
-    # idris2Packages.idris2Lsp
     idris2Packages.pack
-    # koka
     lua-language-server
     nerd-fonts.monaspace
     nh
     nil
     nixfmt
     nix-output-monitor
-    # odin
-    # pandoc
     puffin
     ripgrep
     rsync
@@ -52,7 +41,6 @@
     uiua
     uiua386
     yaml-language-server
-    # yaziPlugins.git
 
     # Web Development LSP Servers
     html-tidy
@@ -75,7 +63,6 @@
     eza
     delta
     sd
-    # choose
 
     # System & Information Tools
     ncdu
@@ -98,7 +85,6 @@
     # LISP
     sbcl
     asdf
-    # roswell
 
     rlwrap
   ];
