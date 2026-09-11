@@ -1,5 +1,21 @@
 { config, ... }:
 {
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "https";
+      prompt = "enabled";
+      prefer_editor_prompt = "disabled";
+      aliases = {
+        co = "pr checkout";
+      };
+      color_labels = "disabled";
+      accessible_colors = "disabled";
+      accessible_prompter = "disabled";
+      spinner = "enabled";
+    };
+  };
+
   programs.git = {
     enable = true;
     settings = {
@@ -10,10 +26,7 @@
 
       init.defaultBranch = "main";
 
-      credential = {
-        helper = "!/usr/bin/gh auth git-credential";
-        useHttpPath = true;
-      };
+      credential.useHttpPath = true;
 
       difftool.prompt = false;
       pager.difftool = true;

@@ -36,7 +36,8 @@
   # plain files is through 'home.file'.
   home.file = {
     ".config/nushell/functions.nu".source = ./files/functions.nu;
-    # ".config/nvim/lua/matugen-template.lua".source = ./files/matugen-template.lua; # matugen theming disabled for now
+    # ".config/nvim/lua/matugen-template.lua".source =  # matugen theming disabled for now
+    #   ./files/matugen-template.lua;
     "stylua.toml".source = ./files/stylua.toml;
     "fourmolu.yaml".source = ./files/fourmolu.yaml;
     ".ocamlinit".text = ''
