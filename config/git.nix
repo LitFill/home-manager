@@ -8,6 +8,8 @@
       prefer_editor_prompt = "disabled";
       aliases = {
         co = "pr checkout";
+        cl = "repo clone";
+        nw = "repo new";
       };
       color_labels = "disabled";
       accessible_colors = "disabled";
