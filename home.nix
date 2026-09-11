@@ -44,6 +44,8 @@
       #require "ppx_jane";;
       open Base;;
     '';
+    ".config/nvim/lua/setup_haskell.lua".source = ./files/nvim/setup_haskell.lua;
+    ".config/nvim/lua/get_short_path.lua".source = ./files/nvim/get_short_path.lua;
   };
 
   # Let Home Manager install and manage itself.
