@@ -83,11 +83,6 @@
     nethogs
     lm_sensors
 
-    # Task Management & Automation
-    # taskwarrior2
-    # timewarrior
-    # cheat
-
     # Communication & Reference
     tealdeer
 

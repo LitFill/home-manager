@@ -63,10 +63,6 @@
       df = "ncdu";
       du = "ncdu";
 
-      # Task management aliases
-      t = "task";
-      tl = "timewarrior";
-
       # Quick access tools
       yz = "yazi";
       fm = "yazi";
