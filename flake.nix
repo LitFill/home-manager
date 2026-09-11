@@ -9,7 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim.url = "github:nix-community/nixvim";
-    smos.url = "github:NorfairKing/smos";
   };
 
   outputs =
@@ -17,7 +16,6 @@
       nixpkgs,
       home-manager,
       nixvim,
-      smos,
       ...
     }@inputs:
     let
@@ -28,14 +26,8 @@
       homeConfigurations."litfill" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        # SANGAT PENTING: Gunakan extraSpecialArgs untuk mengirimkan
-        # variabel 'smos' dan 'system' ke dalam modul-modul .nix lainnya
+        # Make the profile selector available to nixvim.nix
         extraSpecialArgs = {
-          inherit
-            inputs
-            system
-            smos
-            ;
           neovim-profile = "default";
         };
 
