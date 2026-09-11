@@ -174,17 +174,42 @@
             validate = {
               enable = true;
             };
-            schemas = builtins.map
-              ({ pattern, url }: { fileMatch = [ pattern ]; inherit url; })
-              [
-                { pattern = "package.json";       url = "https://json.schemastore.org/package"; }
-                { pattern = "tsconfig*.json";     url = "https://json.schemastore.org/tsconfig"; }
-                { pattern = "jsconfig*.json";     url = "https://json.schemastore.org/jsconfig"; }
-                { pattern = ".eslintrc.json";     url = "https://json.schemastore.org/eslintrc"; }
-                { pattern = "prettierrc.json";    url = "https://json.schemastore.org/prettierrc"; }
-                { pattern = ".stylelintrc.json";  url = "https://json.schemastore.org/stylelintrc"; }
-                { pattern = "babel.config.json";  url = "https://json.schemastore.org/babelrc"; }
-              ];
+            schemas =
+              map
+                ({ pattern, url }: {
+                  fileMatch = [ pattern ];
+                  inherit url;
+                })
+                [
+                  {
+                    pattern = "package.json";
+                    url = "https://json.schemastore.org/package";
+                  }
+                  {
+                    pattern = "tsconfig*.json";
+                    url = "https://json.schemastore.org/tsconfig";
+                  }
+                  {
+                    pattern = "jsconfig*.json";
+                    url = "https://json.schemastore.org/jsconfig";
+                  }
+                  {
+                    pattern = ".eslintrc.json";
+                    url = "https://json.schemastore.org/eslintrc";
+                  }
+                  {
+                    pattern = "prettierrc.json";
+                    url = "https://json.schemastore.org/prettierrc";
+                  }
+                  {
+                    pattern = ".stylelintrc.json";
+                    url = "https://json.schemastore.org/stylelintrc";
+                  }
+                  {
+                    pattern = "babel.config.json";
+                    url = "https://json.schemastore.org/babelrc";
+                  }
+                ];
           };
         };
       };

@@ -4,9 +4,11 @@
       # Command wrapper (e.g., cmd "write" -> "<cmd>write<CR>")
       cmd = str: "<cmd>${str}<CR>";
 
-      nmap =
-        key: action: desc:
-        { mode = "n"; inherit key action; options = { inherit desc; }; };
+      nmap = key: action: desc: {
+        mode = "n";
+        inherit key action;
+        options = { inherit desc; };
+      };
     in
     [
       # --- General ---
@@ -66,12 +68,49 @@
       (nmap "<leader>j" (cmd "lprev") "Previous location")
 
       # Mode specific exceptions
-      { mode = "i"; key = "<C-k>"; action = "<C-k>"; options = { desc = "Input Digraph"; }; }
+      {
+        mode = "i";
+        key = "<C-k>";
+        action = "<C-k>";
+        options = {
+          desc = "Input Digraph";
+        };
+      }
 
       # --- Visual/Motion ---
-      { mode = [ "n" "v" ]; key = "J"; action = "mzJ`z"; options = { desc = "shift+j but cursor stays"; }; }
-      { mode = [ "n" "v" ]; key = "<leader>d"; action = ''"_d''; options = { desc = "delete no register"; }; }
-      { mode = [ "i" "v" ]; key = "kj"; action = "<Esc>"; options = { desc = "exit to normal"; }; }
+      {
+        mode = [
+          "n"
+          "v"
+        ];
+        key = "J";
+        action = "mzJ`z";
+        options = {
+          desc = "shift+j but cursor stays";
+        };
+      }
+      {
+        mode = [
+          "n"
+          "v"
+        ];
+        key = "<leader>d";
+        action = ''"_d'';
+        options = {
+          desc = "delete no register";
+        };
+      }
+      {
+        mode = [
+          "i"
+          "v"
+        ];
+        key = "kj";
+        action = "<Esc>";
+        options = {
+          desc = "exit to normal";
+        };
+      }
 
       # --- IDRIS 2 KEYMAPS ---
       # REPL (The only one not using code_action)
@@ -82,8 +121,12 @@
       (nmap "<leader>imc" (cmd "lua require('idris2.code_action').make_case()") "Idris: make case")
       (nmap "<leader>iml" (cmd "lua require('idris2.code_action').make_lemma()") "Idris: make lemma")
       (nmap "<leader>iac" (cmd "lua require('idris2.code_action').add_clause()") "Idris: add clause")
-      (nmap "<leader>ies" (cmd "lua require('idris2.code_action').expr_search()") "Idris: search expression")
-      (nmap "<leader>igd" (cmd "lua require('idris2.code_action').generate_def()") "Idris: generate definition")
+      (nmap "<leader>ies" (cmd "lua require('idris2.code_action').expr_search()")
+        "Idris: search expression"
+      )
+      (nmap "<leader>igd" (cmd "lua require('idris2.code_action').generate_def()")
+        "Idris: generate definition"
+      )
       (nmap "<leader>irh" (cmd "lua require('idris2.code_action').refine_hole()") "Idris: refine hole")
       (nmap "<leader>iin" (cmd "lua require('idris2.code_action').intro()") "Idris: intro")
       (nmap "<leader>imr" (cmd "make % -o run | !./build/exec/run") "make run for idris2")

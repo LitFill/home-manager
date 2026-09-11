@@ -17,13 +17,37 @@
         };
       };
     };
-  } // lib.genAttrs [
-    "mini-ai" "mini-align" "mini-bracketed" "mini-comment" "mini-cursorword"
-    "mini-diff" "mini-extra" "mini-git" "mini-icons" "mini-indentscope"
-    "mini-jump" "mini-jump2d" "mini-move" "mini-notify" "mini-operators"
-    "mini-pairs" "mini-pick" "mini-splitjoin" "mini-starter" "mini-statusline"
-    "mini-surround" "mini-tabline" "mini-trailspace"
-  ] (name: { enable = true; })
+  }
+  //
+    lib.genAttrs
+      [
+        "mini-ai"
+        "mini-align"
+        "mini-bracketed"
+        "mini-comment"
+        "mini-cursorword"
+        "mini-diff"
+        "mini-extra"
+        "mini-git"
+        "mini-icons"
+        "mini-indentscope"
+        "mini-jump"
+        "mini-jump2d"
+        "mini-move"
+        "mini-notify"
+        "mini-operators"
+        "mini-pairs"
+        "mini-pick"
+        "mini-splitjoin"
+        "mini-starter"
+        "mini-statusline"
+        "mini-surround"
+        "mini-tabline"
+        "mini-trailspace"
+      ]
+      (name: {
+        enable = true;
+      })
   // {
     mini-completion.enable = false;
 
@@ -159,9 +183,19 @@
           toml = [ "taplo fmt" ];
           odin = [ "ols fmt" ];
 
-        } // lib.genAttrs [
-          "javascript" "typescript" "javascriptreact" "typescriptreact"
-          "html" "css" "scss" "json" "jsonc" "markdown" "yaml"
+        }
+        // lib.genAttrs [
+          "javascript"
+          "typescript"
+          "javascriptreact"
+          "typescriptreact"
+          "html"
+          "css"
+          "scss"
+          "json"
+          "jsonc"
+          "markdown"
+          "yaml"
         ] (_: [ "prettier" ])
         // lib.genAttrs [ "sh" "bash" ] (_: [ "shfmt" ])
         // {
