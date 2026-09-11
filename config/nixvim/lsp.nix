@@ -79,23 +79,21 @@
       sqls.enable = true;
 
       uiua.enable = true;
-      uiua.config.filetypes = [ "uiua" ];
+      uiua.filetypes = [ "uiua" ];
 
       ols.enable = true;
-      cl-lsp.enable = true;
+      # cl-lsp.enable = true; # removed upstream; nixvim now suggests c3_lsp
 
       taplo.enable = true;
 
-      idris2_ls = {
+      idris2_lsp = {
         enable = true;
         # Memaksa LSP dijalankan melalui pack
-        config = {
-          cmd = [
-            "pack"
-            "exec"
-            "idris2-lsp"
-          ];
-        };
+        cmd = [
+          "pack"
+          "exec"
+          "idris2-lsp"
+        ];
       };
 
       # ESLint LSP Server untuk JavaScript/TypeScript
