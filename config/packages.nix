@@ -82,10 +82,6 @@
     imv
     mpv
 
-    # LISP
-    sbcl
-    asdf
-
     rlwrap
   ];
 }

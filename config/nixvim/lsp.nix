@@ -82,7 +82,10 @@
       uiua.filetypes = [ "uiua" ];
 
       ols.enable = true;
-      # cl-lsp.enable = true; # removed upstream; nixvim now suggests c3_lsp
+      # No Common Lisp server here on purpose: nixpkgs packages neither
+      # cl-lsp nor swank-lsp, and nixvim's c3_lsp is the C3 language server,
+      # not Common Lisp. REPL access comes from conjure talking to the swank
+      # backend in `nix develop`.
 
       taplo.enable = true;
 

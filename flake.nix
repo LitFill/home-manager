@@ -38,5 +38,13 @@
           nixvim.homeModules.nixvim
         ];
       };
+
+      # Project-scoped tooling: `nix develop` gives you the toolchains the
+      # editor expects without putting them in the home profile.
+      devShells.${system}.default = pkgs.mkShell (
+        import ./devshell.nix {
+          inherit pkgs;
+        }
+      );
     };
 }

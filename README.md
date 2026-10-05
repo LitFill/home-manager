@@ -51,6 +51,7 @@ home-manager/
 │   └── nixvim.nix        # NixVim entry point
 ├── home.nix              # Main configuration
 ├── flake.nix             # Nix flake definition
+├── devshell.nix          # `nix develop` toolchain (SBCL, ASDF systems, swank)
 ├── SETUP.md              # Setup instructions
 └── README.md             # This file
 ```
@@ -76,6 +77,8 @@ home-manager/
 - **Editor**: Neovim with NixVim configuration
 - **System Monitoring**: btop, fastfetch
 - **Documentation**: pandoc, glow for markdown rendering
+- **Common Lisp**: Tree-sitter `commonlisp` highlighting, Parinfer, and conjure
+  driving a swank REPL from the dev shell
 - **Finance**: Complete hledger suite for accounting
 
 ### Design Philosophy
@@ -94,6 +97,7 @@ home-manager/
 | **Formatters**    | Fourmolu, StyLua, nixfmt               |
 | **LSP Servers**   | HLS, rust-analyzer, tsserver, lua-ls   |
 | **System**        | btop, fastfetch, direnv                |
+| **Dev Shell**     | SBCL, ASDF systems, swank REPL backend |
 | **Documentation** | pandoc, glow                           |
 | **Finance**       | hledger suite                          |
 
@@ -105,6 +109,7 @@ This configuration is designed to be easily customizable:
 - **Configure shell**: Modify `config/shell/` files
 - **Customize editor**: Update `config/nixvim/` directory
 - **Change tools**: Edit individual module files
+- **Project tooling**: Edit `devshell.nix`, enter it with `nix develop`
 
 ### Neovim Profiles
 

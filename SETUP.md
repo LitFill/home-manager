@@ -177,6 +177,16 @@ home-manager switch --flake .#your-username
 2. Add packages to the list: `your-package`
 3. Rebuild: `home-manager switch --flake .#your-username`
 
+### Development Shell
+
+```bash
+# Enter the project toolchain (SBCL, ASDF systems, swank)
+nix develop
+```
+
+Language toolchains that only make sense while hacking on a project live in
+`devshell.nix`, not in `config/packages.nix`.
+
 ### Customizing Components
 
 | Component | File to Edit | What to Change |
@@ -186,6 +196,7 @@ home-manager switch --flake .#your-username
 | **Editor** | `config/nixvim/` | Neovim plugins, settings |
 | **Git** | `config/git.nix` | Git configuration, aliases |
 | **Terminal** | `config/tmux.nix` | Tmux settings, keybindings |
+| **Dev Shell** | `devshell.nix` | Project toolchains, e.g. Common Lisp (SBCL, swank) |
 
 ### Checking Configuration Health
 

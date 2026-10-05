@@ -36,6 +36,16 @@
 
     -- matugen theming disabled for now (no themes generated currently)
     -- require "matugen" .setup()
+
+    -- conjure's Common Lisp client calls `conjure.log.append` with a bare string
+    -- when no swank connection is up, but the log API expects a list of lines.
+    -- The client connects on every FileType lisp, so without this every .lisp
+    -- buffer opens with an `ipairs` error in the log flush.
+    local conjure_log = require "conjure.log"
+    local conjure_log_append = conjure_log.append
+    conjure_log.append = function(lines, opts)
+      return conjure_log_append(type(lines) == "string" and { lines } or lines, opts)
+    end
   '';
 
   userCommands.Cd = {

@@ -6,14 +6,16 @@ to customize them.
 ## Module Overview
 
 ```
-config/
-├── nixvim/          # Neovim editor configuration
-├── shell/           # Shell and prompt configuration
-├── tmux.nix         # Terminal multiplexer setup
-├── packages.nix     # System packages
-├── git.nix          # Version control setup
-├── shell.nix        # Shell tools and utilities
-└── nixvim.nix       # NixVim entry point
+home-manager/
+├── config/           # Home Manager modules
+│   ├── nixvim/       # Neovim editor configuration
+│   ├── shell/        # Shell and prompt configuration
+│   ├── tmux.nix      # Terminal multiplexer setup
+│   ├── packages.nix  # System packages
+│   ├── git.nix       # Version control setup
+│   ├── shell.nix     # Shell tools and utilities
+│   └── nixvim.nix    # NixVim entry point
+└── devshell.nix      # `nix develop` toolchain (see flake.nix)
 ```
 
 ## Core Modules
@@ -65,6 +67,39 @@ inputs = {
   nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 };
 ```
+
+### devshell.nix
+
+**Purpose**: Project-scoped tooling for `nix develop`, kept out of the home
+profile so the daily environment stays small
+
+**Current contents**: `sbcl.withPackages` with a starter set of Common Lisp
+systems (alexandria, babel, bordeaux-threads, caveman2, cl-ppcre, dexador,
+fiveam, swank, trivial-backtrace, trivial-gray-streams, trivial-utf-8)
+
+**Adding a library**:
+
+```nix
+commonLispSystems =
+  ps: with ps; [
+    # existing systems...
+    your-library
+  ];
+```
+
+**Common Lisp workflow**:
+
+```bash
+nix develop                 # enters the shell and prints the recipe
+sbcl                        # then at the REPL:
+(require :asdf)             # ASDF is on CL_SOURCE_REGISTRY, no Quicklisp needed
+(asdf:load-system :swank)   # swank backend from nixpkgs
+(swank:create-server :port 4005 :interface "127.0.0.1" :dont-close t)
+```
+
+Neovim then connects with `:ConjureConnect`; `gx` evaluates the form under the
+cursor. There is no Common Lisp LSP: nixpkgs packages neither `cl-lsp` nor
+`swank-lsp`, and NixVim's `c3_lsp` is the C3 language server.
 
 ## Package Management
 
@@ -495,6 +530,19 @@ nixpkgs.config = {
 2. Configure LSP in `nixvim/lsp.nix`
 3. Add formatter if available
 4. Test with sample project
+5. If identifiers are kebab-case, add the filetype to `Kebab-case word motions` in `nixvim/autocmds.nix` so `w`/`b`/`e` don't stop on dashes
+6. If the runtime leaves file extensions undetected, map them in `filetype.extension` in `nixvim.nix` (`.sbcl` and `.ros` for Common Lisp)
+
+For a REPL-driven language, put the toolchain in `devshell.nix` instead of
+`packages.nix` so it only exists inside `nix develop`. Common Lisp is the
+worked example: SBCL with an ASDF system set plus the `swank` backend, driven
+from Neovim by conjure. Before wiring a language server, check what nixpkgs
+actually packages — `c3_lsp` is for the C3 language, not Common Lisp, and no
+Common Lisp LSP is packaged at all.
+
+Check the runtime before adding editor config: Neovim's `lisp` ftplugin already
+sets `iskeyword` with `-`, so CL word motions already stop at real word
+boundaries and `Kebab-case word motions` does not apply to it.
 
 ### Performance Optimization
 
