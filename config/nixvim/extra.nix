@@ -3,6 +3,7 @@
   extraPlugins = [
     pkgs.vimPlugins.stay-centered-nvim
     pkgs.vimPlugins.focus-nvim
+    pkgs.tree-sitter-grammars.tree-sitter-koka
 
     (pkgs.vimUtils.buildVimPlugin {
       name = "koka-nvim";
@@ -37,6 +38,8 @@
     -- matugen theming disabled for now (no themes generated currently)
     -- require "matugen" .setup()
 
+    require("vim._core.ui2").enable()
+
     -- conjure's Common Lisp client calls `conjure.log.append` with a bare string
     -- when no swank connection is up, but the log API expects a list of lines.
     -- The client connects on every FileType lisp, so without this every .lisp
@@ -45,6 +48,21 @@
     local conjure_log_append = conjure_log.append
     conjure_log.append = function(lines, opts)
       return conjure_log_append(type(lines) == "string" and { lines } or lines, opts)
+    end
+
+    -- fix for Koka LSP so noisy
+    local stock_show_message = vim.lsp.handlers["window/showMessage"]
+    vim.lsp.handlers["window/showMessage"] = function(err, params, ctx, config)
+      if    params
+        and params.message
+        and params.message:find("^LspProcessingLog")
+        and ctx
+        and vim.lsp.get_client_by_id(ctx.client_id).name == "koka"
+      then
+        return nil
+      else
+        return stock_show_message(err, params, ctx, config)
+      end
     end
   '';
 

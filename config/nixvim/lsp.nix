@@ -62,7 +62,7 @@
     servers = {
       bashls.enable = true;
       astro = {
-        enable = true;
+        enable = false;
         extraOptions = {
           init_options = {
             typescript = {
@@ -71,7 +71,7 @@
           };
         };
       };
-      clangd.enable = true;
+      # clangd.enable = true;
       lua_ls.enable = true;
       # ocamllsp.enable = true;
       nixd.enable = true;
@@ -81,7 +81,6 @@
       uiua.enable = true;
       uiua.filetypes = [ "uiua" ];
 
-      ols.enable = true;
       # No Common Lisp server here on purpose: nixpkgs packages neither
       # cl-lsp nor swank-lsp, and nixvim's c3_lsp is the C3 language server,
       # not Common Lisp. REPL access comes from conjure talking to the swank
@@ -90,7 +89,7 @@
       taplo.enable = true;
 
       idris2_lsp = {
-        enable = true;
+        enable = false;
         # Memaksa LSP dijalankan melalui pack
         cmd = [
           "pack"

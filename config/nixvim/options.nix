@@ -49,6 +49,7 @@
     updatetime = 300;
     winborder = "rounded";
     wrap = false;
+    exrc = true;
   };
 
   colorschemes.bamboo.enable = true;

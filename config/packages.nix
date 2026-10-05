@@ -9,6 +9,7 @@
     chez
     fastfetch
     fd
+    file
     fourmolu
     glow
     haskell-language-server
@@ -31,6 +32,7 @@
     rsync
     rustup
     shellcheck
+    stylua
     taplo
     tmux
     tree-sitter
@@ -83,5 +85,7 @@
     mpv
 
     rlwrap
+
+    nix-output-monitor
   ];
 }
