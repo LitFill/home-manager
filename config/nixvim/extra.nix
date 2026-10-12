@@ -5,6 +5,11 @@
     pkgs.vimPlugins.focus-nvim
     pkgs.tree-sitter-grammars.tree-sitter-koka
 
+    # Structural editing for parentheses and sexps: paredit verbs plus
+    # drag_pair/form (<p >p <f >f), raise (<localleader>o) and sexp text objects
+    # (af if ae ie).
+    pkgs.vimPlugins.nvim-paredit
+
     (pkgs.vimUtils.buildVimPlugin {
       name = "koka-nvim";
       src = pkgs.fetchFromGitHub {
@@ -24,6 +29,22 @@
     require "focus" .setup {
         ui = { colorcolumn = { enable = true } }
     }
+
+    -- nvim-paredit ships no plugin/ file, so the keybindings only exist once it
+    -- is set up. Its default filetypes already cover `lisp`.
+    require("nvim-paredit").setup {}
+
+    -- conjure keeps its config in `vim.g["conjure#..."]` and `merge` refuses to
+    -- overwrite keys that already exist unless told to, hence `overwrite?`.
+    -- Notifications become a split pane: no HUD, and output wraps instead of
+    -- being clipped. Read it with :ConjureLogSplit (ls) or lg.
+    require("conjure.config").merge({
+      log = {
+        hud = { enabled = false },
+        split = { height = 0.4 },
+        wrap = true
+      }
+    }, { ["overwrite?"] = true })
 
     -- local trans = require "transparent"
 

@@ -36,9 +36,6 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".config/nushell/functions.nu".source = ./files/functions.nu;
-    # ".config/nvim/lua/matugen-template.lua".source =  # matugen theming disabled for now
-    #   ./files/matugen-template.lua;
     "stylua.toml".source = ./files/stylua.toml;
     "fourmolu.yaml".source = ./files/fourmolu.yaml;
     ".ocamlinit".text = ''
@@ -46,8 +43,19 @@
       #require "ppx_jane";;
       open Base;;
     '';
-    ".config/nvim/lua/setup_haskell.lua".source = ./files/nvim/setup_haskell.lua;
-    ".config/nvim/lua/get_short_path.lua".source = ./files/nvim/get_short_path.lua;
+  };
+
+  xdg.configFile = {
+    "nushell/functions.nu".source = ./files/functions.nu;
+    "nvim/lua/get_short_path.lua".source = ./files/nvim/get_short_path.lua;
+    "nvim/lua/setup_haskell.lua".source = ./files/nvim/setup_haskell.lua;
+
+    # "nvim/lua/matugen-template.lua".source =  # matugen theming disabled for now
+    #   ./files/matugen-template.lua;
+
+    # Io programming language syntax (vimscript); ~/.config/nvim is the
+    # first entry of nvim's default runtimepath, so syntax/io.vim is found.
+    "nvim/syntax/io.vim".source = ./files/nvim/syntax/io.vim;
   };
 
   # Let Home Manager install and manage itself.

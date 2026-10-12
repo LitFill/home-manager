@@ -19,12 +19,15 @@
       )
     ];
 
-    filetype.extension.ua = "uiua";
-    filetype.extension.kk = "koka";
+    filetype.extension = {
+      ua = "uiua";
+      kk = "koka";
+      io = "io";
 
-    # Neovim already maps .lisp, .lsp, .asd and .cl to the `lisp` filetype;
-    # these two Common Lisp extensions it leaves alone.
-    filetype.extension.sbcl = "lisp";
-    filetype.extension.ros = "lisp";
+      # Neovim already maps .lisp, .lsp, .asd and .cl to the `lisp` filetype;
+      # these two Common Lisp extensions it leaves alone.
+      sbcl = "lisp";
+      ros = "lisp";
+    };
   };
 }

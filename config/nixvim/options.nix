@@ -13,6 +13,10 @@
     guifont = "JetBrainsMono NF:h14";
 
     GetShortPath = lib.nixvim.utils.mkRaw "require('get_short_path')";
+
+    # Common Lisp block comments (#| ... |#) are invisible to parinfer without
+    # this, so unbalanced parens inside them count as real code.
+    parinfer_lisp_block_comments = true;
   };
 
   diagnostic.settings = {
