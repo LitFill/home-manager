@@ -3,7 +3,6 @@
     enable = true;
     settings = {
       add_newline = true;
-      command_timeout = 20000;
 
       character = {
         success_symbol = "[λ](bold green)";
@@ -15,10 +14,13 @@
 
       custom = {
         haskell_dir = {
-          command = "echo $env.PWD | sed \"s:$HOME::g; s:/: -> :g; s:^ -> ::\"";
+          command = ''
+            echo $env.PWD | sed $"s:($env.HOME)::g; s:/: -> :g; s:^ -> ::"
+          '';
+          # Always run this command
           when = "true";
           format = "[LitFill :: $output]($style)";
-          style = "purple";
+          style = "purple"; # You can choose any color/style here
         };
 
         haskell_tilde = {
