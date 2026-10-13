@@ -11,14 +11,13 @@
     historySize = 10000;
     historyFileSize = 100000;
 
-    # Same environment nushell gets from shell/nushell.nix.
     sessionVariables = {
       EDITOR = "nvim";
       RUST_BACKTRACE = "1";
       LEDGER_FILE = "/home/litfill/finance/2026.journal";
       PNPM_HOME = "/home/litfill/.local/share/pnpm";
+      STARSHIP_CONFIG = "/home/litfill/.config/starship-bash.toml";
     };
-
     # Mirrors the nushell shellAliases, minus nushell-only syntax
     # (nu's `^pass` external calls run directly in bash).
     shellAliases = {
