@@ -15,13 +15,10 @@
 
       custom = {
         haskell_dir = {
-          command = ''
-            echo $env.PWD | sed $"s:($env.HOME)::g; s:/: -> :g; s:^ -> ::"
-          '';
-          # Always run this command
+          command = "echo $env.PWD | sed \"s:$HOME::g; s:/: -> :g; s:^ -> ::\"";
           when = "true";
           format = "[LitFill :: $output]($style)";
-          style = "purple"; # You can choose any color/style here
+          style = "purple";
         };
 
         haskell_tilde = {

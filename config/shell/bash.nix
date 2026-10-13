@@ -74,6 +74,15 @@
       [ -f "$HOME/.config/broot/launcher/bash/br" ] && source "$HOME/.config/broot/launcher/bash/br"
 
       # Utility functions, the bash counterparts of files/functions.nu
+      # Bash-autosuggestions plugin (gray history-based suggestions)
+      [ -f "$HOME/.bash-autosuggestions/bash_autosuggestions.sh" ] || \
+        (mkdir -p "$HOME/.bash-autosuggestions" && \
+         curl -fsL https://github.com/rcaloras/bash-autosuggestions/raw/master/bash_autosuggestions.sh \
+           -o "$HOME/.bash-autosuggestions/bash_autosuggestions.sh")
+      [ -f "$HOME/.bash-autosuggestions/bash_autosuggestions.sh" ] && \
+        source "$HOME/.bash-autosuggestions/bash_autosuggestions.sh"
+
+      # Utility functions
       [ -f "$HOME/.bash_functions" ] && source "$HOME/.bash_functions"
     '';
   };
