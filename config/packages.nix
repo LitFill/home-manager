@@ -37,7 +37,6 @@
     tmux
     tree-sitter
     typescript
-    typescript-language-server
     astro-language-server
     typst
     uiua
