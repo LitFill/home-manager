@@ -191,7 +191,8 @@ Language toolchains that only make sense while hacking on a project live in
 
 | Component | File to Edit | What to Change |
 |-----------|-------------|----------------|
-| **Shell** | `config/shell/nushell.nix` | Nushell settings, aliases |
+| **Shell (nushell)** | `config/shell/nushell.nix` | Nushell settings, aliases |
+| **Shell (bash)** | `config/shell/bash.nix` | Bash settings, aliases, functions |
 | **Prompt** | `config/shell/starship.nix` | Starship prompt configuration |
 | **Editor** | `config/nixvim/` | Neovim plugins, settings |
 | **Git** | `config/git.nix` | Git configuration, aliases |

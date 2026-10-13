@@ -43,6 +43,7 @@ home-manager/
 │   │   └── extra.nix     # Additional configurations
 │   ├── shell/            # Shell configurations
 │   │   ├── nushell.nix   # Nushell setup
+│   │   ├── bash.nix      # Bash setup
 │   │   └── starship.nix  # Starship prompt
 │   ├── tmux.nix          # Terminal multiplexer
 │   ├── packages.nix      # Package list
@@ -67,7 +68,7 @@ home-manager/
 
 ### Terminal Experience
 
-- **Shell**: Nushell with Starship prompt and carapace completions
+- **Shell**: Nushell (primary) and Bash (secondary, comparable alias/function set) with Starship prompt and carapace completions
 - **Navigation**: zoxide for smart directory jumping, broot for file browsing
 - **Multiplexing**: tmux with sensible defaults
 - **File Tools**: yazi (file manager), fd (find), ripgrep (search)

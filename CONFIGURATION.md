@@ -13,7 +13,7 @@ home-manager/
 │   ├── tmux.nix      # Terminal multiplexer setup
 │   ├── packages.nix  # System packages
 │   ├── git.nix       # Version control setup
-│   ├── shell.nix     # Shell tools and utilities
+│   ├── shell/        # Shell and prompt configuration (nushell, bash, starship)
 │   └── nixvim.nix    # NixVim entry point
 └── devshell.nix      # `nix develop` toolchain (see flake.nix)
 ```
@@ -152,8 +152,8 @@ home.packages = with pkgs; [
 **Components**:
 - broot (file browser)
 - carapace (completion system)
+- fzf (fuzzy finder, with C-r/C-t/Alt-C bindings)
 - zoxide (smart directory navigation)
-
 **Customization**:
 
 ```nix
@@ -193,6 +193,41 @@ programs.nushell = {
   };
 };
 ```
+
+### shell/bash.nix
+
+**Purpose**: Bash configuration — the secondary shell, kept
+comparable to the nushell setup without being a full replica
+**Features**:
+- Same environment variables as nushell (EDITOR, RUST_BACKTRACE,
+  LEDGER_FILE, PNPM_HOME) via sessionVariables
+- Aliases mirroring the nushell alias set
+- Utility functions in `files/functions.bash` (managed as
+  `~/.bash_functions`): mkcd, up, back, lcd, ncd, lss, show,
+  glimpse, clean-lines, gst
+- vi editing mode, bash-completion, fzf/zoxide/carapace/starship
+  integration, ghcup and broot launcher sourcing
+
+**Customization**:
+
+```nix
+programs.bash = {
+  enable = true;
+
+  sessionVariables = {
+    EDITOR = "your-editor";
+  };
+
+  shellAliases = {
+    ll = "ls -la";
+  };
+};
+```
+
+Notable deviations from nushell: no startup banner (the nushell
+`fastfetch` call is available on demand as `ff`), and eza aliases
+use `--icons=auto` because a bare `--icons` swallows a following
+path argument in eza 0.23.
 
 ### shell/starship.nix
 
@@ -436,14 +471,15 @@ programs.tmux = {
 #### Change Default Editor
 
 ```nix
-# In shell/nushell.nix
-environmentVariables.EDITOR = "your-editor";
+# In shell/nushell.nix (environmentVariables) or
+# shell/bash.nix (sessionVariables)
+EDITOR = "your-editor";
 ```
 
 #### Add Custom Aliases
 
 ```nix
-# In shell/nushell.nix
+# In shell/nushell.nix or shell/bash.nix
 shellAliases = {
   # ... existing aliases
   mycommand = "your-custom-command";

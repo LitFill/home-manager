@@ -38,6 +38,7 @@
   home.file = {
     "stylua.toml".source = ./files/stylua.toml;
     "fourmolu.yaml".source = ./files/fourmolu.yaml;
+    ".bash_functions".source = ./files/functions.bash;
     ".ocamlinit".text = ''
       #require "core.top";;
       #require "ppx_jane";;

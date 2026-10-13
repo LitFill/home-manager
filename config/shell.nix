@@ -1,5 +1,6 @@
 {
   imports = [
+    ./shell/bash.nix
     ./shell/nushell.nix
     ./shell/starship.nix
   ];
@@ -11,10 +12,20 @@
   programs.carapace = {
     enable = true;
     enableNushellIntegration = true;
+    enableBashIntegration = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableBashIntegration = true;
+    defaultCommand = "fd --type f --hidden --follow --exclude .git";
+    fileWidget.command = "fd --type f --hidden --follow --exclude .git";
+    changeDirWidget.command = "fd --type d --hidden --follow --exclude .git";
   };
 
   programs.zoxide = {
     enable = true;
     enableNushellIntegration = true;
+    enableBashIntegration = true;
   };
 }
