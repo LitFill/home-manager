@@ -16,7 +16,6 @@
       RUST_BACKTRACE = "1";
       LEDGER_FILE = "/home/litfill/finance/2026.journal";
       PNPM_HOME = "/home/litfill/.local/share/pnpm";
-      STARSHIP_CONFIG = "/home/litfill/.config/starship-bash.toml";
     };
     # Mirrors the nushell shellAliases, minus nushell-only syntax
     # (nu's `^pass` external calls run directly in bash).
@@ -70,7 +69,7 @@
       [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
 
       # broot launcher
-      [ -f "$HOME/.config/broot/launcher/bash/br" ] && source "$HOME/.config/broot/launcher/bash/br"
+      #[ -f "$HOME/.config/broot/launcher/bash/br" ] && source "$HOME/.config/broot/launcher/bash/br"
 
       # Utility functions, the bash counterparts of files/functions.nu
       # Bash-autosuggestions plugin (gray history-based suggestions)
@@ -83,6 +82,38 @@
 
       # Utility functions
       [ -f "$HOME/.bash_functions" ] && source "$HOME/.bash_functions"
+
+      # Custom prompt: haskell-style dir, git branch, exit code, λ symbol
+      __bash_ps1() {
+        local last_exit=$?
+        local reset="\[\033[0m\]"
+        local purple_bold="\[\033[1;35m\]"
+        local green="\[\033[0;32m\]"
+        local red="\[\033[0;31m\]"
+        local cyan="\[\033[0;36m\]"
+
+        local userhost="$purple_bold\u@\h$reset"
+        local haskell_dir
+        haskell_dir=$(echo "$PWD" | sed "s|$HOME|~|g; s|/| -> |g; s|^ -> ||g")
+        [ -z "$haskell_dir" ] && haskell_dir="~"
+        local cwd="$cyan$haskell_dir$reset"
+
+        local git_info=""
+        if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+          local branch
+          branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
+          git_info=" $purple_bold[$branch]$reset"
+        fi
+
+        local exit_status=""
+        [ $last_exit -ne 0 ] && exit_status=" $red[✘ $last_exit]$reset"
+
+        local prompt_char="$greenλ$reset"
+        [ $last_exit -ne 0 ] && prompt_char="$redλ$reset"
+
+        PS1="$userhost $cwd$git_info$exit_status\n$prompt_char "
+      }
+      PROMPT_COMMAND='__bash_ps1'
     '';
   };
 }
